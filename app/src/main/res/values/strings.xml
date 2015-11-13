@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ProjectHomies</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_contact_view">contact_view</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_new_contact">new_contact</string>
 </resources>
