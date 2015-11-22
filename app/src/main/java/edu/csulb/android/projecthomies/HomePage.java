@@ -22,6 +22,10 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        web = new ArrayList<String>();
+        web.add("Robert");
+        web.add("Dustin");
+        web.add("Emily");
 
         //Sets up the ListView
         CustomListHomePage adapter = new CustomListHomePage(HomePage.this, web);
