@@ -38,9 +38,6 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        // Sets up the floating action button
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
