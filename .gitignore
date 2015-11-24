@@ -1,4 +1,5 @@
 /build.gradle
+/gradle
 /.idea
 .DS_Store
 /captures
@@ -40,4 +41,6 @@ proguard/
 # Android Studio captures folder
 captures/
 
+/gradlew
+/gradlew.bat
 gradle-wrapper.properties
