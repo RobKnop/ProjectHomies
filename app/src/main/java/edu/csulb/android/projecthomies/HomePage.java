@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -38,6 +39,25 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            }
+        });
+
+        final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
+        mainContactBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+        final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
+        mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            }
+        });
+        final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
+        mainEventsBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
             }
         });
 
