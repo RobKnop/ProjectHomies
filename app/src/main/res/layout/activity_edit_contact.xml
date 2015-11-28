@@ -5,11 +5,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".EditContactView">
-<<<<<<< HEAD
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-=======
->>>>>>> origin/mergemiddleware
 
     <EditText
         android:layout_width="wrap_content"
@@ -100,8 +95,6 @@
         android:layout_alignParentBottom="true"
         android:text="Notes" />
 
-<<<<<<< HEAD
+
 </RelativeLayout>
-=======
-</RelativeLayout>
->>>>>>> origin/mergemiddleware
+
