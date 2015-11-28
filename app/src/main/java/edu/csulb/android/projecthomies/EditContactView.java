@@ -36,3 +36,4 @@ public class EditContactView extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+

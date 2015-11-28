@@ -31,4 +31,4 @@ DESIGN (FINISHED):
 DESIGN (IN PROGRESS):
 1) Design general layout/look - (EH)
 2) Design Homepage - (RK)
-    - Layered card look
+

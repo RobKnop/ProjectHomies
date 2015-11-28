@@ -34,4 +34,6 @@ public class DetailedContactView extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
+

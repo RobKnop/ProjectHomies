@@ -13,4 +13,8 @@
             android:layout_gravity="center_horizontal"/>
 
     </TableRow>
+<<<<<<< HEAD
 </TableLayout>
+=======
+</TableLayout>
+>>>>>>> origin/mergemiddleware

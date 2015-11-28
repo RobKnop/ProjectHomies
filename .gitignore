@@ -47,4 +47,3 @@ captures/
 /app/build.gradle
 /app/proguard-rules.pro
 /settings.gradle
-gradle-wrapper.properties
