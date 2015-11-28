@@ -1,5 +1,6 @@
-/.idea/workspace.xml
-/.idea/libraries
+/build.gradle
+/gradle
+/.idea
 .DS_Store
 /captures
 
@@ -40,3 +41,7 @@ proguard/
 # Android Studio captures folder
 captures/
 
+/gradlew
+/gradlew.bat
+/gradle.properties
+gradle-wrapper.properties
