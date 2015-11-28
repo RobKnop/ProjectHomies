@@ -44,4 +44,7 @@ captures/
 /gradlew
 /gradlew.bat
 /gradle.properties
+/app/build.gradle
+/app/proguard-rules.pro
+/settings.gradle
 gradle-wrapper.properties
