@@ -10,7 +10,7 @@ public class DetailedContactView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_view);
+        setContentView(R.layout.activity_detailed_contact_view);
     }
 
     @Override
