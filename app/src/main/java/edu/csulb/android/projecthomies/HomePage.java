@@ -30,6 +30,7 @@ public class HomePage extends AppCompatActivity {
         web.add("Robert");
         web.add("Dustin");
         web.add("Emily");
+        web.add("Max");
 
         //Sets up the ListView
         HomePageListAdapter adapter = new HomePageListAdapter(HomePage.this, web);
