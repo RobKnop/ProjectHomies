@@ -25,7 +25,7 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_below="@+id/view" />
 
     <android.support.design.widget.FloatingActionButton
@@ -40,6 +40,32 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contacts"
+        android:id="@+id/mainContactBtn"
+        android:layout_below="@+id/listView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reminders"
+        android:id="@+id/mainRemindersBtn"
+        android:layout_above="@+id/fab"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Events"
+        android:id="@+id/mainEventsBtn"
+        android:layout_below="@+id/mainRemindersBtn"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 
