@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomListHomePage extends ArrayAdapter<String> {
+public class HomePageListAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> web;
 
-    public CustomListHomePage(Activity context, ArrayList<String> web) {
+    public HomePageListAdapter(Activity context, ArrayList<String> web) {
         super(context, R.layout.list_view_homepage, web);
         this.context = context;
         this.web = web;
