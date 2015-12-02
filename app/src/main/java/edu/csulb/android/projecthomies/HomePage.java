@@ -44,7 +44,7 @@ public class HomePage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        web = new ArrayList<String>();
+        web = new ArrayList<>();
         web.add("Robert");
         web.add("Dustin");
         web.add("Emily");
@@ -81,6 +81,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         final ViewGroup fabContainer = (ViewGroup) findViewById(R.id.fab_container);
+        fabContainer.setZ(10000);
         fab = (ImageButton) findViewById(R.id.fab);
         fabAction1 = findViewById(R.id.fab_action_1);
         fabAction1.setOnClickListener(new View.OnClickListener() {
