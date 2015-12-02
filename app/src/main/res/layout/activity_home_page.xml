@@ -38,7 +38,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp">
+        card_view:cardElevation="8dp">
 
         <TextView
             android:id="@+id/info_text3"
@@ -62,7 +62,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="8dp">
+        card_view:cardElevation="40dp">
 
         <TextView
             android:id="@+id/info_text2"
@@ -85,7 +85,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="12dp">
+        card_view:cardElevation="100dp">
 
         <TextView
             android:id="@+id/info_text"
