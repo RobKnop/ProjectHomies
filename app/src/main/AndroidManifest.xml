@@ -32,6 +32,10 @@
             android:name=".Reminders"
             android:label="Reminders">
         </activity>
+        <activity
+            android:name=".AddReminder"
+            android:label="Add Reminder">
+        </activity>
     </application>
 
 </manifest>
