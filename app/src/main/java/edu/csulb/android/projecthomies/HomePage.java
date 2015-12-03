@@ -3,6 +3,7 @@ package edu.csulb.android.projecthomies;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -106,8 +107,10 @@ public class HomePage extends AppCompatActivity {
         });
         final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
         mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
+            public void onClick(View v)
+            {
+                Intent i = new Intent(HomePage.this, Reminders.class);
+                startActivity(i);
             }
         });
         final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
