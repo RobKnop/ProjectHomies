@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#3d4935" >
+        android:background="#ffffff" >
 
         <EditText
             android:id="@+id/msg_et"
@@ -20,16 +20,19 @@
 
         <DatePicker
             android:id="@+id/datePicker"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
+
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"/>
 
         <TimePicker
             android:id="@+id/timePicker"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/datePicker"
-            android:layout_centerHorizontal="true" />
+
+            android:timePickerMode="spinner"/>
 
         <Button
             android:layout_width="378dp"
