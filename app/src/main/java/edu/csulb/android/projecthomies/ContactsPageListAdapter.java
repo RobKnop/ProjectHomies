@@ -7,22 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsPageListAdapter  extends ArrayAdapter<ContactsPageCard> {
+public class ContactsPageListAdapter extends ArrayAdapter<ContactsPageCard> {
     private static final String TAG = "CardArrayAdapter";
+    private Context context;
     private List<ContactsPageCard> contactsPageCardList = new ArrayList<ContactsPageCard>();
 
     static class CardViewHolder {
         TextView line1;
         TextView line2;
+        EditText editText;
     }
 
     public ContactsPageListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
+        this.context = context;
     }
 
     @Override
@@ -49,8 +53,8 @@ public class ContactsPageListAdapter  extends ArrayAdapter<ContactsPageCard> {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.activity_detailed_contact_view, parent, false);
             viewHolder = new CardViewHolder();
-            viewHolder.line1 = (TextView) row.findViewById(R.id.line1);
-            //viewHolder.line2 = (TextView) row.findViewById(R.id.line2);
+            viewHolder.line1 = (TextView)row.findViewById(R.id.nameID);
+            viewHolder.line2 = (TextView)row.findViewById(R.id.companyID);
             row.setTag(viewHolder);
         } else {
             viewHolder = (CardViewHolder)row.getTag();
@@ -58,6 +62,8 @@ public class ContactsPageListAdapter  extends ArrayAdapter<ContactsPageCard> {
         ContactsPageCard contactsPageCard = getItem(position);
         viewHolder.line1.setText(contactsPageCard.getLine1());
         viewHolder.line2.setText(contactsPageCard.getLine2());
+        viewHolder.line1.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
+        viewHolder.line2.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
         return row;
     }
 

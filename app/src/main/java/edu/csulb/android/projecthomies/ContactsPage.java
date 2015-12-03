@@ -17,8 +17,8 @@ public class ContactsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_contactspage);
-        //setContentView(R.layout.activity_contacts_page);
-        getActionBar().setTitle("Contacts");
+        //setContentView(R.layout.activity_contacts_page_card_view);
+        //getActionBar().setTitle("Contacts");
         listView = (ListView)findViewById(R.id.card_listView);
         adapter = new ContactsPageListAdapter(getApplicationContext(), R.layout.activity_detailed_contact_view);
 
