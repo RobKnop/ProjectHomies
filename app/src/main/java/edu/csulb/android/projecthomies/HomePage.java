@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -61,10 +63,58 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        final View contactCategory =  findViewById(R.id.card_view3);
+        contactCategory.setOnClickListener(new View.OnClickListener() {
+            private boolean expanded = false;
+            final int targetHeight = contactCategory.getContext().getResources().getDisplayMetrics().heightPixels;
+            final int initialHeight = contactCategory.getLayoutParams().height;
+            final int heightDiff = targetHeight - initialHeight;
+
+            public void onClick(View v) {
+                if (!expanded) {
+
+                    Animation a = new Animation() {
+                        @Override
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            contactCategory.getLayoutParams().height = initialHeight + (int) (targetHeight * interpolatedTime);
+                            contactCategory.requestLayout();
+                        }
+
+                        @Override
+                        public boolean willChangeBounds() {
+                            return true;
+                        }
+                    };
+                    // 1dp/ms
+                    a.setDuration((int) (5 * targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+                    v.startAnimation(a);
+                    expanded = true;
+                } else {
+                    Animation b = new Animation() {
+                        @Override
+                        protected void applyTransformation(float interpolatedTime, Transformation t) {
+                            contactCategory.getLayoutParams().height = initialHeight + (int) (heightDiff * (1 - interpolatedTime));
+                            contactCategory.requestLayout();
+                        }
+
+                        @Override
+                        public boolean willChangeBounds() {
+                            return true;
+                        }
+                    };
+                    // 1dp/ms
+                    b.setDuration((int) (5 * targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+                    v.startAnimation(b);
+                    expanded = false;
+                }
+            }
+        });
+
         final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
         mainContactBtn.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
-                // Perform action on click
+
             }
         });
         final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
@@ -194,4 +244,5 @@ public class HomePage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
