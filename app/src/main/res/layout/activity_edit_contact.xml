@@ -52,7 +52,7 @@
         android:ems="10"
         android:id="@+id/emailEdit"
         android:text="Email Address"
-        android:layout_alignBottom="@+id/button"
+        android:layout_alignBottom="@+id/changephotoID"
         android:layout_toEndOf="@+id/profilePicEdit" />
 
     <EditText
@@ -79,8 +79,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
+        android:text="Change Photo"
+        android:id="@+id/changephotoID"
         android:layout_below="@+id/editCompany"
         android:layout_alignParentStart="true" />
 

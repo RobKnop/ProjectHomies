@@ -3,6 +3,7 @@ package edu.csulb.android.projecthomies;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -64,7 +65,8 @@ public class HomePage extends AppCompatActivity {
         final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
         mainContactBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
+                Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
+                startActivity(i);
             }
         });
         final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
