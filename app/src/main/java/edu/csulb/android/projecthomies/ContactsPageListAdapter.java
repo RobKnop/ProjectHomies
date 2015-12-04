@@ -13,20 +13,41 @@ import java.util.List;
 // ADAPTER CLASS FOR CONTACTS
 public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageListAdapter.PersonViewHolder> {
 
-    public static class PersonViewHolder extends RecyclerView.ViewHolder {
+    private static ClickListener clickListener;
+
+    public static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         CardView cv;
         TextView personName;
         TextView personCompany;
         ImageView personPhoto;
+        private ClickListener mListener;
 
-        PersonViewHolder(View itemView) {
+
+        PersonViewHolder(View itemView, ClickListener listener) {
             super(itemView);
+
+            this.mListener = listener;
+            itemView.setOnClickListener(this);
             cv = (CardView)itemView.findViewById(R.id.card_view);
             personName = (TextView)itemView.findViewById(R.id.person_name);
             personCompany = (TextView)itemView.findViewById(R.id.person_company);
             personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
         }
+        @Override
+        public void onClick(View v) {
+            if (mListener != null) {
+                clickListener.onItemClick(getAdapterPosition(), v);
+            }
+        }
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        ContactsPageListAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
     }
 
     List<ContactsPageCardData> persons;
@@ -43,7 +64,7 @@ public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageLi
     @Override
     public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_contacts_page_card_item, viewGroup, false);
-        PersonViewHolder pvh = new PersonViewHolder(v);
+        PersonViewHolder pvh = new PersonViewHolder(v, clickListener);
         return pvh;
     }
 
