@@ -20,6 +20,7 @@ public class Reminders extends AppCompatActivity
     ArrayList<String> remindersList = new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
+    private String newReminder;
     private View fabAction;
 
     @Override
@@ -37,7 +38,13 @@ public class Reminders extends AppCompatActivity
             }
         });
 
+        // Initiate ListView with premade Reminders
         initList();
+        // Add saved Reminder to ListView
+        //Intent i = getIntent();
+        //newReminder = i.getExtras().getString("reminderName");
+        //remindersList.add(newReminder);
+
         ListView lv = (ListView) findViewById(R.id.listView);
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,

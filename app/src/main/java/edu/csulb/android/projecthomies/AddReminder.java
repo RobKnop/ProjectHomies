@@ -1,5 +1,6 @@
 package edu.csulb.android.projecthomies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,6 +36,9 @@ public class AddReminder extends AppCompatActivity
         alarm = alarmName.getText().toString();
         date = getDateFromDatePicket(dPicker);
 
+        Intent i = new Intent(AddReminder.this, Reminders.class);
+        i.putExtra("reminderName", alarm);
+        startActivity(i);
     }
 
     // Find all the GUI elements by views
