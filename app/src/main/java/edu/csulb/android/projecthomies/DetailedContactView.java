@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
+// THIS IS NOT BEING USED AT THE VERY MOMENT
+
 public class DetailedContactView extends AppCompatActivity {
 
     @Override

@@ -1,73 +1,61 @@
 package edu.csulb.android.projecthomies;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsPageListAdapter extends ArrayAdapter<ContactsPageCard> {
-    private static final String TAG = "CardArrayAdapter";
-    private Context context;
-    private List<ContactsPageCard> contactsPageCardList = new ArrayList<ContactsPageCard>();
+// ADAPTER CLASS FOR CONTACTS
+public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageListAdapter.PersonViewHolder> {
 
-    static class CardViewHolder {
-        TextView line1;
-        TextView line2;
-        EditText editText;
-    }
+    public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
-    public ContactsPageListAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-        this.context = context;
-    }
+        CardView cv;
+        TextView personName;
+        TextView personCompany;
+        ImageView personPhoto;
 
-    @Override
-    public void add(ContactsPageCard object) {
-        contactsPageCardList.add(object);
-        super.add(object);
-    }
-
-    @Override
-    public int getCount() {
-        return this.contactsPageCardList.size();
-    }
-
-    @Override
-    public ContactsPageCard getItem(int index) {
-        return this.contactsPageCardList.get(index);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        CardViewHolder viewHolder;
-        if (row == null) {
-            LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.activity_detailed_contact_view, parent, false);
-            viewHolder = new CardViewHolder();
-            viewHolder.line1 = (TextView)row.findViewById(R.id.nameID);
-            viewHolder.line2 = (TextView)row.findViewById(R.id.companyID);
-            row.setTag(viewHolder);
-        } else {
-            viewHolder = (CardViewHolder)row.getTag();
+        PersonViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView)itemView.findViewById(R.id.card_view);
+            personName = (TextView)itemView.findViewById(R.id.person_name);
+            personCompany = (TextView)itemView.findViewById(R.id.person_company);
+            personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
         }
-        ContactsPageCard contactsPageCard = getItem(position);
-        viewHolder.line1.setText(contactsPageCard.getLine1());
-        viewHolder.line2.setText(contactsPageCard.getLine2());
-        viewHolder.line1.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
-        viewHolder.line2.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
-        return row;
     }
 
-    public Bitmap decodeToBitmap(byte[] decodedByte) {
-        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+    List<ContactsPageCardData> persons;
+
+    ContactsPageListAdapter(List<ContactsPageCardData> persons){
+        this.persons = persons;
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_contacts_page_card_item, viewGroup, false);
+        PersonViewHolder pvh = new PersonViewHolder(v);
+        return pvh;
+    }
+
+    @Override
+    public void onBindViewHolder(PersonViewHolder personViewHolder, int i) {
+        personViewHolder.personName.setText(persons.get(i).getName());
+        personViewHolder.personCompany.setText(persons.get(i).getCompany());
+        personViewHolder.personPhoto.setImageResource(persons.get(i).getImageID());
+    }
+
+    @Override
+    public int getItemCount() {
+        return persons.size();
     }
 }
