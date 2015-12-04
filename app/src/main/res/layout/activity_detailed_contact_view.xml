@@ -71,12 +71,12 @@
         android:text="Notes"
         android:id="@+id/moreInfo"
         android:layout_below="@+id/contactPhoto"
-        android:layout_toEndOf="@+id/contactPhoto" />
+        android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/notesText"
         android:layout_below="@+id/moreInfo"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
