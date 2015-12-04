@@ -57,9 +57,11 @@ public class AddReminder extends AppCompatActivity
         alarm = alarmName.getText().toString();
         date = getDateFromDatePicket(dPicker);
 
-        Intent i = new Intent(AddReminder.this, Reminders.class);
+        // Pass new Reminder info back to Reminders (Parent activity)
+        Intent i = new Intent();
         i.putExtra("reminderName", alarm);
-        startActivity(i);
+        setResult(RESULT_OK, i);
+        finish();
     }
 
     // Find all the GUI elements by views
@@ -70,6 +72,7 @@ public class AddReminder extends AppCompatActivity
         tPicker = (TimePicker) findViewById(R.id.timePicker);
     }
 
+    // UTILITY - Get date
     public static Date getDateFromDatePicket(DatePicker datePicker)
     {
         int day = datePicker.getDayOfMonth();

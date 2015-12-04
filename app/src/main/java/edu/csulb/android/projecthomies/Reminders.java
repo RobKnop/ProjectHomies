@@ -9,23 +9,21 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class Reminders extends AppCompatActivity
-{
+public class Reminders extends AppCompatActivity {
     ArrayList<String> remindersList = new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
-    private String newReminder;
     private View fabAction;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminders);
 
@@ -34,7 +32,7 @@ public class Reminders extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Reminders.this, AddReminder.class);
-                startActivity(i);
+                startActivityForResult(i, 1);
             }
         });
 
@@ -46,17 +44,35 @@ public class Reminders extends AppCompatActivity
         //remindersList.add(newReminder);
 
         ListView lv = (ListView) findViewById(R.id.listView);
-        adapter=new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 remindersList);
         lv.setAdapter(adapter);
     }
 
-    private void initList()
-    {
+    private void initList() {
         remindersList.add("Meet Up Reminder");
         remindersList.add("Call Your Friend Reminder");
         remindersList.add("Dinner Reminder");
         remindersList.add("Party Reminder");
+    }
+
+    // Adds new Reminder to current list
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String newReminder = data.getStringExtra("reminderName");
+                remindersList.add(newReminder);
+                ListView lv = (ListView) findViewById(R.id.listView);
+                adapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_list_item_1,
+                        remindersList);
+                lv.setAdapter(adapter);
+
+                //Toast.makeText(getApplicationContext(), "Total number of Items are:" + lv.getAdapter().getCount() , Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 }
