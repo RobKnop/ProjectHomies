@@ -1,12 +1,11 @@
 package edu.csulb.android.projecthomies;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-// THIS IS NOT BEING USED AT THE VERY MOMENT
 
 public class DetailedContactView extends AppCompatActivity {
 
@@ -14,9 +13,7 @@ public class DetailedContactView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_contact_view);
-        getActionBar().setTitle("DETAILED");
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -32,8 +29,9 @@ public class DetailedContactView extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.edit_contact_settings) {
+            Intent i = new Intent("edu.csulb.android.projecthomies.EditContactView");
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

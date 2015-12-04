@@ -21,12 +21,18 @@
         </activity>
         <activity
             android:name=".DetailedContactView"
-            android:label="@string/title_activity_detailed_contact_view" >
+            android:label="@string/title_activity_detailed_contact_view"
+            android:parentActivityName=".ContactsPage">
+            <intent-filter>
+                <action android:name="edu.csulb.android.projecthomies.DetailedContactView"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".EditContactView"
             android:label="@string/title_activity_edit_contact"
-            android:parentActivityName=".ContactsPage">
+            android:parentActivityName=".DetailedContactView">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.EditContactView"/>
 
