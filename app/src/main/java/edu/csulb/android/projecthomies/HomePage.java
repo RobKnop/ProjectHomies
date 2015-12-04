@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -47,15 +48,17 @@ public class HomePage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        web = new ArrayList<>();
-        web.add("Robert");
-        web.add("Dustin");
-        web.add("Emily");
-        web.add("Max");
+
+        web = new ArrayList<String>();
+        web.add("RK");
+        web.add("DC");
+        web.add("EH");
+        web.add("MM");
+        web.add("TS");
 
         //Sets up the ListView
         HomePageListAdapter adapter = new HomePageListAdapter(HomePage.this, web);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        GridView listView = (GridView) findViewById(R.id.gridView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
