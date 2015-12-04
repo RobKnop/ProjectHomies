@@ -30,7 +30,8 @@
         </activity>
         <activity
             android:name=".Reminders"
-            android:label="Reminders">
+            android:label="Reminders"
+            android:parentActivityName=".HomePage">
         </activity>
         <activity
             android:name=".AddReminder"

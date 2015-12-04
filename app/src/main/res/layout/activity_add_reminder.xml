@@ -15,7 +15,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:maxLines="2"
-            android:hint="Message" >
+            android:hint="Reminder description"
+            android:imeOptions="actionDone"
+            android:singleLine="true">
         </EditText>
 
         <DatePicker

@@ -1,11 +1,16 @@
 package edu.csulb.android.projecthomies;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -28,6 +33,22 @@ public class AddReminder extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
         findViews();
+
+        alarmName.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    // hide virtual keyboard
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(alarmName.getWindowToken(),
+                            InputMethodManager.RESULT_UNCHANGED_SHOWN);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     // Save an alarm
