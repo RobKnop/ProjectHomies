@@ -49,6 +49,17 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Reminders"
+            android:label="Reminders"
+            android:parentActivityName=".HomePage"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".AddReminder"
+            android:label="Add Reminder"
+            android:parentActivityName=".Reminders">
+        </activity>
     </application>
 
 </manifest>
