@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -45,7 +47,7 @@ public class HomePage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        web = new ArrayList<String>();
+        web = new ArrayList<>();
         web.add("Robert");
         web.add("Dustin");
         web.add("Emily");
@@ -62,11 +64,48 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        final View contactCategory =  findViewById(R.id.card_view3);
+        contactCategory.setOnClickListener(new View.OnClickListener() {
+            private boolean expanded = false;
+            final int targetHeight = contactCategory.getContext().getResources().getDisplayMetrics().heightPixels;
+            final int initialHeight = contactCategory.getLayoutParams().height;
+
+            public void onClick(View v) {
+                expanded = expandAndCollapse(v, expanded, targetHeight, initialHeight);
+            }
+        });
+
+        final View remindersCategory =  findViewById(R.id.card_view2);
+        remindersCategory.setOnClickListener(new View.OnClickListener() {
+            private boolean expanded = false;
+            final int targetHeight = remindersCategory.getContext().getResources().getDisplayMetrics().heightPixels;
+            final int initialHeight = remindersCategory.getLayoutParams().height;
+
+            public void onClick(View v) {
+                expanded = expandAndCollapse(v, expanded, targetHeight, initialHeight);
+            }
+        });
+
+        final View eventsCategory =  findViewById(R.id.card_view);
+        eventsCategory.setOnClickListener(new View.OnClickListener() {
+            private boolean expanded = false;
+            final int targetHeight = eventsCategory.getContext().getResources().getDisplayMetrics().heightPixels;
+            final int initialHeight = eventsCategory.getLayoutParams().height;
+
+            public void onClick(View v) {
+                expanded = expandAndCollapse(v, expanded, targetHeight, initialHeight);
+            }
+        });
+
+
         final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
         mainContactBtn.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
+
                 Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
                 startActivity(i);
+
             }
         });
         final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
@@ -83,6 +122,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         final ViewGroup fabContainer = (ViewGroup) findViewById(R.id.fab_container);
+        fabContainer.setZ(10000);
         fab = (ImageButton) findViewById(R.id.fab);
         fabAction1 = findViewById(R.id.fab_action_1);
         fabAction1.setOnClickListener(new View.OnClickListener() {
@@ -195,4 +235,44 @@ public class HomePage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private boolean expandAndCollapse(final View v, boolean expanded, final int targetHeight, final int initialHeight) {
+        final int heightDiff = targetHeight - initialHeight;
+
+        if (!expanded) {
+            Animation a = new Animation() {
+                @Override
+                protected void applyTransformation(float interpolatedTime, Transformation t) {
+                    v.getLayoutParams().height = initialHeight + (int) (targetHeight * interpolatedTime);
+                    v.requestLayout();
+                }
+
+                @Override
+                public boolean willChangeBounds() {
+                    return true;
+                }
+            };
+            // 1dp/ms
+            a.setDuration((int) (3 * targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+            v.startAnimation(a);
+            return true;
+        } else {
+            Animation b = new Animation() {
+                @Override
+                protected void applyTransformation(float interpolatedTime, Transformation t) {
+                    v.getLayoutParams().height = initialHeight + (int) (heightDiff * (1 - interpolatedTime));
+                    v.requestLayout();
+                }
+
+                @Override
+                public boolean willChangeBounds() {
+                    return true;
+                }
+            };
+            // 1dp/ms
+            b.setDuration((int) (3 * targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+            v.startAnimation(b);
+            return false;
+        }
+    }
+
 }
