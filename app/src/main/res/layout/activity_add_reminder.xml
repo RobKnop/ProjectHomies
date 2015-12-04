@@ -10,7 +10,7 @@
         android:background="#ffffff" >
 
         <EditText
-            android:id="@+id/msg_et"
+            android:id="@+id/editText_alarmName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:text="Save Reminder"
             android:id="@+id/buttonSaveReminder"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="createAlarm"/>
 
 
     </LinearLayout>
