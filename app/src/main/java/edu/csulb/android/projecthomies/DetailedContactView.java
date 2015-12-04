@@ -14,6 +14,7 @@ public class DetailedContactView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_contact_view);
+        getActionBar().setTitle("DETAILED");
     }
 
     @Override

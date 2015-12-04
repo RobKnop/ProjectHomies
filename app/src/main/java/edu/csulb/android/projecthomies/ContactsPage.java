@@ -1,6 +1,7 @@
 package edu.csulb.android.projecthomies;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,7 +50,7 @@ public class ContactsPage extends Activity {
         persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
         persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
         persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
-        persons.add(new ContactsPageCardData("Melinda Houchins", "Rat"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
     }
 
     private void initializeAdapter(){
@@ -59,6 +60,8 @@ public class ContactsPage extends Activity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d(TAG, "onItemClick position: " + position);
+                Intent i = new Intent("edu.csulb.android.projecthomies.EditContactView");
+                startActivity(i);
             }
         });
     }

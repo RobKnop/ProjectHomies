@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".EditContactView"
-            android:label="@string/title_activity_edit_contact" >
+            android:label="@string/title_activity_edit_contact"
+            android:parentActivityName=".ContactsPage">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.EditContactView"/>
 
