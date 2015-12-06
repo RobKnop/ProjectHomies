@@ -50,15 +50,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Reminders"
-            android:label="Reminders"
-            android:parentActivityName=".HomePage"
-            android:launchMode="singleTop">
-        </activity>
-        <activity
             android:name=".AddReminder"
             android:label="Add Reminder"
-            android:parentActivityName=".Reminders">
+            android:parentActivityName=".HomePage">
         </activity>
     </application>
 

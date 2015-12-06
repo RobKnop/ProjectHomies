@@ -18,6 +18,7 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -39,6 +40,8 @@ public class HomePage extends AppCompatActivity {
     private float offset1;
     private float offset2;
     private float offset3;
+    private ArrayList<String> remindersList = new ArrayList<String>();
+    private ArrayAdapter<String> reminderAdapter;
 
 
     @Override
@@ -48,6 +51,10 @@ public class HomePage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        remindersList.add("Meet Up Reminder");
+        remindersList.add("Call Your Friend Reminder");
+        remindersList.add("Dinner Reminder");
+        remindersList.add("Party Reminder");
 
         web = new ArrayList<String>();
         web.add("RK");
@@ -66,6 +73,12 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
+
+        ListView lv = (ListView) findViewById(R.id.listView);
+        reminderAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                remindersList);
+        lv.setAdapter(reminderAdapter);
 
         final View contactCategory =  findViewById(R.id.card_view3);
         contactCategory.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +128,7 @@ public class HomePage extends AppCompatActivity {
         mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                Intent i = new Intent(HomePage.this, Reminders.class);
+                Intent i = new Intent(HomePage.this, AddReminder.class);
                 startActivity(i);
             }
         });
@@ -141,8 +154,8 @@ public class HomePage extends AppCompatActivity {
         fabAction2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action2", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(HomePage.this, AddReminder.class);
+                startActivityForResult(i, 1);
             }
         });
         fabAction3 = findViewById(R.id.fab_action_3);
@@ -278,6 +291,24 @@ public class HomePage extends AppCompatActivity {
             v.startAnimation(b);
             return false;
         }
+    }
+
+    // Adds new Reminder to current list
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String newReminder = data.getStringExtra("reminderName");
+                remindersList.add(newReminder);
+                ListView lv = (ListView) findViewById(R.id.listView);
+                reminderAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_list_item_1,
+                        remindersList);
+                lv.setAdapter(reminderAdapter);
+
+            }
+        }
+
     }
 
 }
