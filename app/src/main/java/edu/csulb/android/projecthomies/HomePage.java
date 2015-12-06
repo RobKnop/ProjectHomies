@@ -128,7 +128,7 @@ public class HomePage extends AppCompatActivity {
         mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                Intent i = new Intent(HomePage.this, Reminders.class);
+                Intent i = new Intent(HomePage.this, AddReminder.class);
                 startActivity(i);
             }
         });

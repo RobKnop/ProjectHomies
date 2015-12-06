@@ -57,7 +57,7 @@ public class AddReminder extends AppCompatActivity
         alarm = alarmName.getText().toString();
         date = getDateFromDatePicket(dPicker);
 
-        // Pass new Reminder info back to Reminders (Parent activity)
+        // Pass new Reminder info back to homePage (Parent activity)
         Intent i = new Intent();
         i.putExtra("reminderName", alarm);
         setResult(RESULT_OK, i);
