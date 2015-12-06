@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -50,6 +53,11 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ImageView imageView1 = (ImageView) findViewById(R.id.userProfilePic);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.user_profile_pic);
+        RoundImage roundedImage = new RoundImage(bm);
+        imageView1.setImageDrawable(roundedImage);
 
         remindersList.add("Meet Up Reminder");
         remindersList.add("Call Your Friend Reminder");
