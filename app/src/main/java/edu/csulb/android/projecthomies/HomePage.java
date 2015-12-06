@@ -53,6 +53,9 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         ImageView imageView1 = (ImageView) findViewById(R.id.userProfilePic);
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.user_profile_pic);
