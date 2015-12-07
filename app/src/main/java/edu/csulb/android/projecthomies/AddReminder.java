@@ -11,7 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -21,11 +20,8 @@ public class AddReminder extends AppCompatActivity
 {
     private EditText alarmName;
     private DatePicker dPicker;
-    private TimePicker tPicker;
 
-    private Date date;
-    private String time;
-    private String alarm;
+    //private String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,8 +50,8 @@ public class AddReminder extends AppCompatActivity
     // Save an alarm
     public void createAlarm(View v)
     {
-        alarm = alarmName.getText().toString();
-        date = getDateFromDatePicket(dPicker);
+        String alarm = alarmName.getText().toString();
+        getDateFromDatePicket(dPicker);
 
         // Pass new Reminder info back to homePage (Parent activity)
         Intent i = new Intent();
@@ -69,7 +65,7 @@ public class AddReminder extends AppCompatActivity
     {
         alarmName = (EditText) findViewById(R.id.editText_alarmName);
         dPicker = (DatePicker) findViewById(R.id.datePicker);
-        tPicker = (TimePicker) findViewById(R.id.timePicker);
+        findViewById(R.id.timePicker);
     }
 
     // UTILITY - Get date

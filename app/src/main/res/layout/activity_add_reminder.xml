@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:maxLines="2"
-            android:hint="Reminder description"
+            android:hint="@string/reminderDescription"
             android:imeOptions="actionDone"
             android:singleLine="true">
         </EditText>
@@ -39,7 +39,7 @@
         <Button
             android:layout_width="378dp"
             android:layout_height="wrap_content"
-            android:text="Save Reminder"
+            android:text="@string/saveReminder"
             android:id="@+id/buttonSaveReminder"
             android:layout_gravity="center_horizontal"
             android:onClick="createAlarm"/>

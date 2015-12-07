@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -22,7 +24,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -40,7 +44,7 @@ public class HomePage extends AppCompatActivity {
     private float offset1;
     private float offset2;
     private float offset3;
-    private ArrayList<String> remindersList = new ArrayList<String>();
+    private ArrayList<String> remindersList = new ArrayList<>();
     private ArrayAdapter<String> reminderAdapter;
 
 
@@ -50,32 +54,40 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        ImageView imageView1 = (ImageView) findViewById(R.id.userProfilePic);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.user_profile_pic);
+        RoundImage roundedImage = new RoundImage(bm);
+        imageView1.setImageDrawable(roundedImage);
 
         remindersList.add("Meet Up Reminder");
         remindersList.add("Call Your Friend Reminder");
         remindersList.add("Dinner Reminder");
         remindersList.add("Party Reminder");
 
-        web = new ArrayList<String>();
+        web = new ArrayList<>();
         web.add("RK");
         web.add("DC");
         web.add("EH");
         web.add("MM");
         web.add("TS");
 
-        //Sets up the ListView
-        HomePageListAdapter adapter = new HomePageListAdapter(HomePage.this, web);
-        GridView listView = (GridView) findViewById(R.id.gridView);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        gridview.setAdapter(new FavoritesImageAdapter(this));
 
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(HomePage.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
         ListView lv = (ListView) findViewById(R.id.listView);
-        reminderAdapter = new ArrayAdapter<String>(this,
+        reminderAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 remindersList);
         lv.setAdapter(reminderAdapter);
@@ -122,14 +134,6 @@ public class HomePage extends AppCompatActivity {
                 Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
                 startActivity(i);
 
-            }
-        });
-        final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
-        mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                Intent i = new Intent(HomePage.this, AddReminder.class);
-                startActivity(i);
             }
         });
         final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
@@ -301,7 +305,7 @@ public class HomePage extends AppCompatActivity {
                 String newReminder = data.getStringExtra("reminderName");
                 remindersList.add(newReminder);
                 ListView lv = (ListView) findViewById(R.id.listView);
-                reminderAdapter = new ArrayAdapter<String>(this,
+                reminderAdapter = new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
                         remindersList);
                 lv.setAdapter(reminderAdapter);
