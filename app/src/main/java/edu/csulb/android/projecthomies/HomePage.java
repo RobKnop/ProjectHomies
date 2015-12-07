@@ -30,6 +30,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import edu.csulb.android.projecthomies.events.CalenderActivity;
+import edu.csulb.android.projecthomies.events.ListViewActivity;
+
 public class HomePage extends AppCompatActivity {
 
     ArrayList<String> web;
@@ -139,7 +142,8 @@ public class HomePage extends AppCompatActivity {
         final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
         mainEventsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
+                Intent i = new Intent(HomePage.this, ListViewActivity.class);
+                startActivity(i);
             }
         });
 
