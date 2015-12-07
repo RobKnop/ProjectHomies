@@ -6,4 +6,6 @@
 
     <string name="title_activity_edit_contact">Edit Contact</string>
     <string name="title_activity_contacts_page">Contacts</string>
+    <string name="reminderDescription">Reminder description</string>
+    <string name="saveReminder">Save Reminder</string>
 </resources>
