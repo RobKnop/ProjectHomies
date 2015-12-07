@@ -75,10 +75,8 @@ public class HomePage extends AppCompatActivity {
         web.add("MM");
         web.add("TS");
 
-        //Sets up the ListView
-        HomePageListAdapter adapter = new HomePageListAdapter(HomePage.this, web);
         GridView gridview = (GridView) findViewById(R.id.gridView);
-        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setAdapter(new FavoritesImageAdapter(this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,

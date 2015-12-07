@@ -10,10 +10,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ImageAdapter extends BaseAdapter {
+public class FavoritesImageAdapter extends BaseAdapter {
     private Context mContext;
 
-    public ImageAdapter(Context c) {
+    public FavoritesImageAdapter(Context c) {
         mContext = c;
     }
 
