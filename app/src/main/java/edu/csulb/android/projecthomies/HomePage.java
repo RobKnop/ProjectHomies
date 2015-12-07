@@ -26,6 +26,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -76,12 +77,14 @@ public class HomePage extends AppCompatActivity {
 
         //Sets up the ListView
         HomePageListAdapter adapter = new HomePageListAdapter(HomePage.this, web);
-        GridView listView = (GridView) findViewById(R.id.gridView);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        gridview.setAdapter(new ImageAdapter(this));
 
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(HomePage.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
