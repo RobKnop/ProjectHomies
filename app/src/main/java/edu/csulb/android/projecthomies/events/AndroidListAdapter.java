@@ -19,7 +19,6 @@ public class AndroidListAdapter extends ArrayAdapter<CalendarCollection>{
 
     public AndroidListAdapter(Context context, int resourceId,ArrayList<CalendarCollection> values) {
         super(context, resourceId, values);
-        // TODO Auto-generated constructor stub
         
         this.context = context;
         this.values = values;

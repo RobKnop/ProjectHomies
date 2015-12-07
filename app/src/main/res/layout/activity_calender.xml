@@ -5,19 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.androidfromhome.calendar.CalenderActivity" >
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:background="#343434"
         android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#78C165"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp" >
@@ -49,8 +47,8 @@
                     android:layout_marginTop="5dip"
                     android:gravity="center"
                     android:text="January"
-                    android:textColor="#ffffff"
-                    android:textSize="18dip"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </FrameLayout>
@@ -76,7 +74,8 @@
             android:paddingBottom="5dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:paddingTop="6dp" >
+            android:paddingTop="6dp"
+            android:background="#000000">
 
             <TextView
                 android:id="@+id/TextView06"
@@ -147,15 +146,15 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#dfdfdf"
+            android:background="#ffffff"
             android:padding="2dp" />
 
         <GridView
             android:id="@+id/gv_calendar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:cacheColorHint="#80000000"
+            android:background="#ffffff"
+            android:cacheColorHint="#ffffff"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="7"
@@ -164,14 +163,6 @@
             android:textAlignment="gravity" >
 
         </GridView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#343434"
-            android:orientation="vertical" >
-
-        </LinearLayout>
 
     </LinearLayout>
 

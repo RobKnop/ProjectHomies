@@ -111,15 +111,15 @@ public class CalendarAdapter extends BaseAdapter {
             dayView.setFocusable(false);
         } else {
             // setting curent month's days in blue color.
-            dayView.setTextColor(Color.WHITE);
+            dayView.setTextColor(Color.BLACK);
         }
 
 
         if (day_string.get(position).equals(curentDateString)) {
 
-            v.setBackgroundColor(Color.CYAN);
+            v.setBackgroundColor(Color.RED);
         } else {
-            v.setBackgroundColor(Color.parseColor("#343434"));
+            v.setBackgroundColor(Color.parseColor("#ffffff"));
         }
 
 
@@ -152,10 +152,10 @@ public class CalendarAdapter extends BaseAdapter {
 
     public View setSelected(View view, int pos) {
         if (previousView != null) {
-            previousView.setBackgroundColor(Color.parseColor("#343434"));
+            previousView.setBackgroundColor(Color.parseColor("#ffffff"));
         }
 
-        view.setBackgroundColor(Color.CYAN);
+        view.setBackgroundColor(Color.RED);
 
         int len = day_string.size();
         if (len > pos) {
@@ -235,10 +235,9 @@ public class CalendarAdapter extends BaseAdapter {
             if (len1 > pos) {
 
                 if (day_string.get(pos).equals(date)) {
-                    v.setBackgroundColor(Color.parseColor("#343434"));
+                    v.setBackgroundColor(Color.parseColor("#ffffff"));
                     v.setBackgroundResource(R.drawable.rounded_calender_item);
-
-                    txt.setTextColor(Color.WHITE);
+                    txt.setTextColor(Color.BLACK);
                 }
             }
         }
