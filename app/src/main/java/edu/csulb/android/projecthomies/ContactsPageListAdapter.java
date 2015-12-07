@@ -64,8 +64,7 @@ public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageLi
     @Override
     public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_contacts_page_card_item, viewGroup, false);
-        PersonViewHolder pvh = new PersonViewHolder(v, clickListener);
-        return pvh;
+        return new PersonViewHolder(v, clickListener);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class HomePage extends AppCompatActivity {
     private float offset1;
     private float offset2;
     private float offset3;
-    private ArrayList<String> remindersList = new ArrayList<String>();
+    private ArrayList<String> remindersList = new ArrayList<>();
     private ArrayAdapter<String> reminderAdapter;
 
 
@@ -68,7 +68,7 @@ public class HomePage extends AppCompatActivity {
         remindersList.add("Dinner Reminder");
         remindersList.add("Party Reminder");
 
-        web = new ArrayList<String>();
+        web = new ArrayList<>();
         web.add("RK");
         web.add("DC");
         web.add("EH");
@@ -87,7 +87,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         ListView lv = (ListView) findViewById(R.id.listView);
-        reminderAdapter = new ArrayAdapter<String>(this,
+        reminderAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 remindersList);
         lv.setAdapter(reminderAdapter);
@@ -313,7 +313,7 @@ public class HomePage extends AppCompatActivity {
                 String newReminder = data.getStringExtra("reminderName");
                 remindersList.add(newReminder);
                 ListView lv = (ListView) findViewById(R.id.listView);
-                reminderAdapter = new ArrayAdapter<String>(this,
+                reminderAdapter = new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
                         remindersList);
                 lv.setAdapter(reminderAdapter);

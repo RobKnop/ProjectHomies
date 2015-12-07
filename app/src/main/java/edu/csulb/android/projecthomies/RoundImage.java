@@ -14,14 +14,12 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 
 public class RoundImage extends Drawable {
-      private final Bitmap mBitmap;
       private final Paint mPaint;
       private final RectF mRectF;
       private final int mBitmapWidth;
       private final int mBitmapHeight;
 
       public RoundImage(Bitmap bitmap) {
-            mBitmap = bitmap;
             mRectF = new RectF();
             mPaint = new Paint();
             mPaint.setAntiAlias(true);
@@ -29,8 +27,8 @@ public class RoundImage extends Drawable {
             final BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
             mPaint.setShader(shader);
 
-            mBitmapWidth = mBitmap.getWidth();
-            mBitmapHeight = mBitmap.getHeight();
+            mBitmapWidth = bitmap.getWidth();
+            mBitmapHeight = bitmap.getHeight();
       }
 
       @Override
@@ -72,10 +70,10 @@ public class RoundImage extends Drawable {
             return mBitmapHeight;
       }
 
-      public void setAntiAlias(boolean aa) {
+      /*public void setAntiAlias(boolean aa) {
             mPaint.setAntiAlias(aa);
             invalidateSelf();
-      }
+      }*/
 
       @Override
       public void setFilterBitmap(boolean filter) {
@@ -89,8 +87,8 @@ public class RoundImage extends Drawable {
             invalidateSelf();
       }
 
-      public Bitmap getBitmap() {
+      /*public Bitmap getBitmap() {
             return mBitmap;
-      }
+      }*/
 
 }
