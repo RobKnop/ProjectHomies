@@ -136,14 +136,6 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
-        final Button mainRemindersBtn = (Button) findViewById(R.id.mainRemindersBtn);
-        mainRemindersBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                Intent i = new Intent(HomePage.this, AddReminder.class);
-                startActivity(i);
-            }
-        });
         final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
         mainEventsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

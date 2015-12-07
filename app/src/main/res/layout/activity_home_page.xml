@@ -92,12 +92,15 @@
         card_view:cardElevation="40dp">
 
 
-        <Button
-            android:id="@+id/mainRemindersBtn"
+        <TextView
+            android:id="@+id/mainRemindersTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Reminders" />
+            android:text="Reminders"
+            android:padding="5dp"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/listView"
