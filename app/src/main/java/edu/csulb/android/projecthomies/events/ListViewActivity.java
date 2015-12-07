@@ -47,13 +47,10 @@ public class ListViewActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         switch (v.getId()) {
         case R.id.btn_calender:
             startActivity(new Intent(ListViewActivity.this,CalenderActivity.class));
-            
             break;
-
         default:
             break;
         }
