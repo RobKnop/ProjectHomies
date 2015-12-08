@@ -1,18 +1,32 @@
 package edu.csulb.android.projecthomies;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class DetailedContactView extends AppCompatActivity {
+
+    private TextView first_n;
+    private TextView last_n;
+    private TextView company;
+    private TextView phoneNumber;
+    private TextView emailAddress;
+    private TextView address;
+    private TextView birthday;
+    private TextView notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_contact_view);
+        SQLiteDatabase readable = new ContactsDatabase(this).getReadableDatabase();
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
