@@ -68,11 +68,11 @@ public class AlarmNotificationService extends Service {
      */
     private void showNotification() {
         // This is the 'title' of the notification
-        CharSequence title = "Alarm!!";
+        CharSequence title = "Project Homies";
         // This is the icon to use on the notification
         int icon = R.drawable.ic_dialog_alert;
         // This is the scrolling text of the notification
-        CharSequence text = "Your notification time is upon us.";
+        CharSequence text = "Time to connect with your homies!";
         // What time to show on the notification
         long time = System.currentTimeMillis();
 
@@ -83,18 +83,14 @@ public class AlarmNotificationService extends Service {
                 .setContentText(text);
 
         // The PendingIntent to launch our activity if the user selects this notification
-        // PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, HomePage.class), 0);
         Intent resultIntent = new Intent(this, HomePage.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Set Notficiation's click behavior
         notification.setContentIntent(resultPendingIntent);
 
-        // Set the info for the views that show in the notification panel.
-        //DEPRECATED -> notification.setLatestEventInfo(this, title, text, contentIntent);
-
         // Clear the notification when it is pressed
-        // notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notification.setAutoCancel(true);
 
         // Send the notification to the system.
         mNM.notify(NOTIFICATION, notification.build());
