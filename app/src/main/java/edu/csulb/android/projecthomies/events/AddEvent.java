@@ -23,7 +23,7 @@ import edu.csulb.android.projecthomies.R;
 
 public class AddEvent extends AppCompatActivity
 {
-    private EditText alarmName;
+    private EditText eventName;
     private DatePicker dPicker;
 
     //private String time;
@@ -35,15 +35,13 @@ public class AddEvent extends AppCompatActivity
         setContentView(R.layout.event_add_activity);
         findViews();
 
-        alarmName.setOnEditorActionListener(new TextView.OnEditorActionListener()
-        {
+        eventName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
-            {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // hide virtual keyboard
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(alarmName.getWindowToken(),
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(eventName.getWindowToken(),
                             InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     return true;
                 }
@@ -55,7 +53,7 @@ public class AddEvent extends AppCompatActivity
     // Save an alarm
     public void createAlarm(View v)
     {
-        String alarm = alarmName.getText().toString();
+        String alarm = eventName.getText().toString();
         Date date = getDateFromDatePicket(dPicker);
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(date);
@@ -63,7 +61,7 @@ public class AddEvent extends AppCompatActivity
 
         // Pass new Reminder info back to homePage (Parent activity)
         Intent i = new Intent();
-        i.putExtra("reminderName", alarm);
+        i.putExtra("eventName", alarm);
         i.putExtra("date", s);
         setResult(RESULT_OK, i);
         finish();
@@ -72,7 +70,7 @@ public class AddEvent extends AppCompatActivity
     // Find all the GUI elements by views
     private void findViews()
     {
-        alarmName = (EditText) findViewById(R.id.editText_alarmName);
+        eventName = (EditText) findViewById(R.id.eventName);
         dPicker = (DatePicker) findViewById(R.id.datePicker);
     }
 

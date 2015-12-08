@@ -73,7 +73,7 @@ public class ListViewActivity extends Activity implements OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                String newReminder = data.getStringExtra("reminderName");
+                String newReminder = data.getStringExtra("eventName");
                 String date = data.getStringExtra("date");
                 CalendarCollection.date_collection_arr.add(new CalendarCollection(date, newReminder));
 
