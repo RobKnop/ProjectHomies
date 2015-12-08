@@ -72,6 +72,7 @@ public class EditContactView extends AppCompatActivity {
 
         String selection = ContactsDatabase.KEY_ID + " LIKE? ";
         String[] selectionArgs = {"1"};
+        // PUT THIS SOMEWHERE ELSE FOR NOW
         //int count = writeable.update(ContactsDatabase.DBNAME, newValues, selection, selectionArgs);
     }
     private Bitmap yourSelectedImage = null;
