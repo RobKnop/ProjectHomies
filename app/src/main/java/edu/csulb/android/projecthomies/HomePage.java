@@ -340,7 +340,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void getWidget() {
-        Button btn_calender = (Button) findViewById(R.id.btn_calender);
+        ImageButton btn_calender = (ImageButton) findViewById(R.id.btn_calender);
         btn_calender.setOnClickListener(this);
 
         lv_android = (ListView) findViewById(R.id.lv_android);
