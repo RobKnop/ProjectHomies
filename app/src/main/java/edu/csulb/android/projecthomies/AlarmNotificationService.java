@@ -8,6 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 /**
@@ -75,19 +76,28 @@ public class AlarmNotificationService extends Service {
         // What time to show on the notification
         long time = System.currentTimeMillis();
 
-        Notification notification = new Notification(icon, text, time);
+        NotificationCompat.Builder notification =
+                new NotificationCompat.Builder(this)
+                .setSmallIcon(icon)
+                .setContentTitle(title)
+                .setContentText(text);
 
         // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, HomePage.class), 0);
+        // PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, HomePage.class), 0);
+        Intent resultIntent = new Intent(this, HomePage.class);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Set Notficiation's click behavior
+        notification.setContentIntent(resultPendingIntent);
 
         // Set the info for the views that show in the notification panel.
-        notification.setLatestEventInfo(this, title, text, contentIntent);
+        //DEPRECATED -> notification.setLatestEventInfo(this, title, text, contentIntent);
 
         // Clear the notification when it is pressed
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        // notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
         // Send the notification to the system.
-        mNM.notify(NOTIFICATION, notification);
+        mNM.notify(NOTIFICATION, notification.build());
 
         // Stop the service when we are finished
         stopSelf();
