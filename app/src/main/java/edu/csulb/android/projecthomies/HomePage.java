@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
@@ -193,6 +194,7 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+    // ADDING CONTACTCARDS TO THE HOMEPAGE
     private void addContactCardsToHomePage() {
         RecyclerView rv = (RecyclerView)findViewById(R.id.recycler_view);
 
@@ -212,6 +214,12 @@ public class HomePage extends AppCompatActivity {
         persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
         persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
         persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        SQLiteDatabase readable = new ContactsDatabase(this).getReadableDatabase();
+
+        String contactNameExt = "";
+        String contactCompanyExt = "";
+        String contactPhotoExt = "";
 
         ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
         rv.setAdapter(adapter);
