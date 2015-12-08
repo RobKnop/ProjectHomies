@@ -11,7 +11,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,6 +88,10 @@ public class HomePage extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+
+        // SETTING CONTACTS TO THE HOMEPAGE
+        addContactCardsToHomePage();
+        //
 
         ListView lv = (ListView) findViewById(R.id.listView);
         reminderAdapter = new ArrayAdapter<>(this,
@@ -195,6 +202,37 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void addContactCardsToHomePage() {
+        RecyclerView rv = (RecyclerView)findViewById(R.id.recycler_view);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        // TEST CARDS
+        // To Do: Add Contacts to the HomePage
+        ArrayList<ContactsPageCardData> persons = new ArrayList<>();
+        persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
+        persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
+        persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
+        persons.add(new ContactsPageCardData("Molie Vasquez", "Foodie"));
+        persons.add(new ContactsPageCardData("Dee Williams", "Promoter"));
+        persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
+        persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
+        persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });
     }
 
     private void collapseFab() {
@@ -309,7 +347,6 @@ public class HomePage extends AppCompatActivity {
                         android.R.layout.simple_list_item_1,
                         remindersList);
                 lv.setAdapter(reminderAdapter);
-
             }
         }
 

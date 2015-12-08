@@ -8,8 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ContactsDatabase extends SQLiteOpenHelper {
 
-    private static String DBNAME = "contactsqlite";
-    private static int VERSION = 1;
+    public static String DBNAME = "contactsqlite";
+    public static int VERSION = 1;
+    private static final String DATABASE_TABLE = "locations";
     public static final String KEY_ID = "_id";
     public static final String FIRST_NAME = "first_n";
     public static final String LAST_NAME = "last_n";
@@ -18,7 +19,7 @@ public class ContactsDatabase extends SQLiteOpenHelper {
     public static final String ADDRESS = "address";
     public static final String BIRTHDAY = "birthday";
     public static final String NOTES = "notes";
-    private static final String DATABASE_TABLE = "locations";
+    public static final String IMG_LOCATION = "img location";
 
     private SQLiteDatabase mDB;
 
@@ -38,6 +39,7 @@ public class ContactsDatabase extends SQLiteOpenHelper {
                 ADDRESS + " text " +
                 BIRTHDAY + " text " +
                 NOTES + " text " +
+                IMG_LOCATION + " text" +
                 " ) ";
 
         db.execSQL(sql);
@@ -61,7 +63,8 @@ public class ContactsDatabase extends SQLiteOpenHelper {
                 COMPANY,
                 EMAIL,
                 ADDRESS,
-                NOTES} , null, null, null, null, null);
+                NOTES,
+                IMG_LOCATION} , null, null, null, null, null);
     }
 
     @Override

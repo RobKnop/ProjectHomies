@@ -33,8 +33,29 @@ public class ContactsPage extends Activity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        initializeData();
-        initializeAdapter();
+        // TEST CARDS
+        // To Do: Add Contacts to the HomePage
+        persons = new ArrayList<>();
+        persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
+        persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
+        persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
+        persons.add(new ContactsPageCardData("Molie Vasquez", "Foodie"));
+        persons.add(new ContactsPageCardData("Dee Williams", "Promoter"));
+        persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
+        persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
+        persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Log.d(TAG, "onItemClick position: " + position);
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });
     }
 
     // TEST CARDS
