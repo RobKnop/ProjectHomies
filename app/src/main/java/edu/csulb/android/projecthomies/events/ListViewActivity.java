@@ -1,18 +1,15 @@
 package edu.csulb.android.projecthomies.events;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import edu.csulb.android.projecthomies.R;
 
@@ -58,7 +55,6 @@ public class ListViewActivity extends Activity implements OnClickListener {
                 startActivity(new Intent(ListViewActivity.this, CalenderActivity.class));
                 break;
             case R.id.btn_addEvent:
-                Log.v("DSFDSF", "SKFNSKF");
                 Intent i = new Intent(ListViewActivity.this, AddEvent.class);
                 startActivityForResult(i, 1);
                 break;

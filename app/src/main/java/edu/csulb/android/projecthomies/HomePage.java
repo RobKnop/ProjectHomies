@@ -30,10 +30,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import edu.csulb.android.projecthomies.events.AddEvent;
+import edu.csulb.android.projecthomies.events.AndroidListAdapter;
+import edu.csulb.android.projecthomies.events.CalendarCollection;
 import edu.csulb.android.projecthomies.events.CalenderActivity;
 import edu.csulb.android.projecthomies.events.ListViewActivity;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<String> web;
     private ImageButton fab;
@@ -49,6 +52,8 @@ public class HomePage extends AppCompatActivity {
     private float offset3;
     private ArrayList<String> remindersList = new ArrayList<>();
     private ArrayAdapter<String> reminderAdapter;
+    private ListView lv_android;
+    private AndroidListAdapter list_adapter;
 
 
     @Override
@@ -95,6 +100,17 @@ public class HomePage extends AppCompatActivity {
                 remindersList);
         lv.setAdapter(reminderAdapter);
 
+
+        CalendarCollection.date_collection_arr = new ArrayList<CalendarCollection>();
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-01", "John Birthday"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-04", "Client Meeting at 5 p.m."));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-06", "A Small Party at my office"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-02", "Marriage Anniversary"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-11", "Live Event and Concert of sonu"));
+
+
+        getWidget();
+
         final View contactCategory =  findViewById(R.id.card_view3);
         contactCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
@@ -137,13 +153,6 @@ public class HomePage extends AppCompatActivity {
                 Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
                 startActivity(i);
 
-            }
-        });
-        final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
-        mainEventsBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, ListViewActivity.class);
-                startActivity(i);
             }
         });
 
@@ -316,7 +325,49 @@ public class HomePage extends AppCompatActivity {
 
             }
         }
+        if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                String newReminder = data.getStringExtra("eventName");
+                String date = data.getStringExtra("date");
+                CalendarCollection.date_collection_arr.add(new CalendarCollection(date, newReminder));
+
+                lv_android = (ListView) findViewById(R.id.lv_android);
+                list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+                lv_android.setAdapter(list_adapter);
+
+            }
+        }
 
     }
+
+    public void getWidget() {
+        Button btn_calender = (Button) findViewById(R.id.btn_calender);
+        btn_calender.setOnClickListener(this);
+
+        Button btn_addEvent = (Button) findViewById(R.id.btn_addEvent);
+        btn_addEvent.setOnClickListener(this);
+
+        lv_android = (ListView) findViewById(R.id.lv_android);
+        list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+        lv_android.setAdapter(list_adapter);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_calender:
+                startActivity(new Intent(HomePage.this, CalenderActivity.class));
+                break;
+            case R.id.btn_addEvent:
+                Intent i = new Intent(HomePage.this, AddEvent.class);
+                startActivityForResult(i, 2);
+                break;
+            default:
+                break;
+        }
+
+    }
+
 
 }
