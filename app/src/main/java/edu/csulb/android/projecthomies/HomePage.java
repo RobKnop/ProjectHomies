@@ -132,17 +132,6 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-
-        final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
-        mainContactBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
-                startActivity(i);
-
-            }
-        });
         final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
         mainEventsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
