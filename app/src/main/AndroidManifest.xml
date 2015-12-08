@@ -54,6 +54,9 @@
             android:label="Add Reminder"
             android:parentActivityName=".HomePage">
         </activity>
+
+        <service android:name="AlarmService" />
+        <service android:name=".AlarmNotificationService" />
     </application>
 
 </manifest>

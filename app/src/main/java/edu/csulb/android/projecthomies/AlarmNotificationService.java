@@ -32,7 +32,7 @@ public class AlarmNotificationService extends Service {
     // Unique id to identify the notification.
     private static final int NOTIFICATION = 123;
     // Name of an intent extra we can use to identify if this service was started to create a notification
-    public static final String INTENT_NOTIFY = "com.blundell.tut.service.INTENT_NOTIFY";
+    public static final String INTENT_NOTIFY = "edu.csulb.android.projecthomies.INTENT_NOTIFY";
     // The system notification manager
     private NotificationManager mNM;
 
@@ -81,7 +81,7 @@ public class AlarmNotificationService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, HomePage.class), 0);
 
         // Set the info for the views that show in the notification panel.
-        //notification.setLatestEventInfo(this, title, text, contentIntent);
+        notification.setLatestEventInfo(this, title, text, contentIntent);
 
         // Clear the notification when it is pressed
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
