@@ -1,7 +1,5 @@
 package edu.csulb.android.projecthomies.events;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.GregorianCalendar;
 
 import edu.csulb.android.projecthomies.R;
 

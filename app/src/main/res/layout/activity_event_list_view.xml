@@ -1,10 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@android:style/Theme.Holo"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.csulb.android.projecthomies.events.ListViewActivity" >
+    tools:context="edu.csulb.android.projecthomies.events.ListViewActivity">
 
     <LinearLayout
         android:id="@+id/LinearLayout2"
@@ -15,19 +16,23 @@
         android:padding="15dp" >
 
         <Button
-            android:id="@+id/btn_calender"
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calendar"
-            android:textStyle="bold" />
+            android:text="New Event"
+            android:id="@+id/btn_addEvent" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calender"
+            android:id="@+id/btn_calender"
+            android:layout_gravity="right" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/lv_android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
     </ListView>
 
 </LinearLayout>

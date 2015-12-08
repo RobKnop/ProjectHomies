@@ -14,7 +14,6 @@ public class AndroidListAdapter extends ArrayAdapter<CalendarCollection>{
     
     private final Context context;
     private final ArrayList<CalendarCollection> values;
-    private ViewHolder viewHolder;
     private final int resourceId;
 
     public AndroidListAdapter(Context context, int resourceId,ArrayList<CalendarCollection> values) {
@@ -28,7 +27,8 @@ public class AndroidListAdapter extends ArrayAdapter<CalendarCollection>{
     
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        
+
+        ViewHolder viewHolder;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
