@@ -34,7 +34,6 @@ import edu.csulb.android.projecthomies.events.AddEvent;
 import edu.csulb.android.projecthomies.events.AndroidListAdapter;
 import edu.csulb.android.projecthomies.events.CalendarCollection;
 import edu.csulb.android.projecthomies.events.CalenderActivity;
-import edu.csulb.android.projecthomies.events.ListViewActivity;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
@@ -179,8 +178,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         fabAction3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action3", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(HomePage.this, AddEvent.class);
+                startActivityForResult(i, 2);
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -344,9 +343,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         Button btn_calender = (Button) findViewById(R.id.btn_calender);
         btn_calender.setOnClickListener(this);
 
-        Button btn_addEvent = (Button) findViewById(R.id.btn_addEvent);
-        btn_addEvent.setOnClickListener(this);
-
         lv_android = (ListView) findViewById(R.id.lv_android);
         list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
         lv_android.setAdapter(list_adapter);
@@ -358,10 +354,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.btn_calender:
                 startActivity(new Intent(HomePage.this, CalenderActivity.class));
-                break;
-            case R.id.btn_addEvent:
-                Intent i = new Intent(HomePage.this, AddEvent.class);
-                startActivityForResult(i, 2);
                 break;
             default:
                 break;

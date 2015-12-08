@@ -138,14 +138,6 @@
             android:layout_marginTop="60dp"/>
 
         <Button
-            android:id="@+id/btn_addEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Event"
-            android:layout_marginTop="400dp"
-            android:layout_below="@+id/lv_android"/>
-
-        <Button
             android:id="@+id/btn_calender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
