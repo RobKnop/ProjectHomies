@@ -11,6 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class AddReminder extends AppCompatActivity
 {
     private EditText alarmName;
     private DatePicker dPicker;
+    private TimePicker tPicker;
 
     //private String time;
 
@@ -30,14 +33,12 @@ public class AddReminder extends AppCompatActivity
         setContentView(R.layout.activity_add_reminder);
         findViews();
 
-        alarmName.setOnEditorActionListener(new TextView.OnEditorActionListener()
-        {
+        alarmName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
-            {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // hide virtual keyboard
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(alarmName.getWindowToken(),
                             InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     return true;
@@ -51,13 +52,17 @@ public class AddReminder extends AppCompatActivity
     public void createAlarm(View v)
     {
         String alarm = alarmName.getText().toString();
-        getDateFromDatePicket(dPicker);
+        setNotification(dPicker, tPicker);
 
         // Pass new Reminder info back to homePage (Parent activity)
         Intent i = new Intent();
         i.putExtra("reminderName", alarm);
         setResult(RESULT_OK, i);
         finish();
+
+        // Notify user of the notification
+        Toast.makeText(this, "Notification set for: " + dPicker.getDayOfMonth() + "/" +
+                dPicker.getMonth()+1 + "/" + dPicker.getYear(), Toast.LENGTH_SHORT).show();
     }
 
     // Find all the GUI elements by views
@@ -65,18 +70,26 @@ public class AddReminder extends AppCompatActivity
     {
         alarmName = (EditText) findViewById(R.id.editText_alarmName);
         dPicker = (DatePicker) findViewById(R.id.datePicker);
-        findViewById(R.id.timePicker);
+        tPicker = (TimePicker) findViewById(R.id.timePicker);
     }
 
     // UTILITY - Get date
-    public static Date getDateFromDatePicket(DatePicker datePicker)
+    public static Date setNotification(DatePicker datePicker, TimePicker timePicker)
     {
+        // Gets the date chosen on DatePicker
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year =  datePicker.getYear();
 
+        // Create new calender for date and time selected from DatePicker and TimePicker
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
+        calendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
+        calendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
+        calendar.set(Calendar.SECOND, 0);
+
+        // Call service to set alarm
+        
 
         return calendar.getTime();
     }
