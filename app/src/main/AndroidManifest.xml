@@ -67,6 +67,17 @@
 
         <service android:name="AlarmService" />
         <service android:name=".AlarmNotificationService" />
+        <activity
+            android:name=".events.AddEvent"
+            android:label="Add Event">
+        </activity>
+        <activity android:name=".events.CalenderActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

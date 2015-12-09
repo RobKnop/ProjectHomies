@@ -96,7 +96,7 @@ public class AddReminder extends AppCompatActivity {
     // Find all the GUI elements by views
     private void findViews()
     {
-        alarmName = (EditText) findViewById(R.id.editText_alarmName);
+        alarmName = (EditText) findViewById(R.id.eventName);
         dPicker = (DatePicker) findViewById(R.id.datePicker);
         tPicker = (TimePicker) findViewById(R.id.timePicker);
     }
