@@ -4,12 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/projecthomies_ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HomePage"
+            android:name=".SplashScreenActivity"
             android:label="@string/app_name"
             android:statusBarColor="@android:color/black"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -17,6 +17,16 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomePage"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.csulb.android.projecthomies.HomePage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -54,6 +64,9 @@
             android:label="Add Reminder"
             android:parentActivityName=".HomePage">
         </activity>
+
+        <service android:name="AlarmService" />
+        <service android:name=".AlarmNotificationService" />
         <activity
             android:name=".events.AddEvent"
             android:label="Add Event">
