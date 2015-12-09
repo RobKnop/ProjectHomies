@@ -1,9 +1,10 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.events;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -12,13 +13,17 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.csulb.android.projecthomies.R;
 
-public class AddReminder extends AppCompatActivity
+
+public class AddEvent extends AppCompatActivity
 {
-    private EditText alarmName;
+    private EditText eventName;
     private DatePicker dPicker;
 
     //private String time;
@@ -27,18 +32,16 @@ public class AddReminder extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_reminder);
+        setContentView(R.layout.event_add_activity);
         findViews();
 
-        alarmName.setOnEditorActionListener(new TextView.OnEditorActionListener()
-        {
+        eventName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
-            {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // hide virtual keyboard
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(alarmName.getWindowToken(),
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(eventName.getWindowToken(),
                             InputMethodManager.RESULT_UNCHANGED_SHOWN);
                     return true;
                 }
@@ -50,12 +53,16 @@ public class AddReminder extends AppCompatActivity
     // Save an alarm
     public void createAlarm(View v)
     {
-        String alarm = alarmName.getText().toString();
-        getDateFromDatePicket(dPicker);
+        String alarm = eventName.getText().toString();
+        Date date = getDateFromDatePicket(dPicker);
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String s = formatter.format(date);
+        Log.v("DATE", s);
 
         // Pass new Reminder info back to homePage (Parent activity)
         Intent i = new Intent();
-        i.putExtra("reminderName", alarm);
+        i.putExtra("eventName", alarm);
+        i.putExtra("date", s);
         setResult(RESULT_OK, i);
         finish();
     }
@@ -63,9 +70,8 @@ public class AddReminder extends AppCompatActivity
     // Find all the GUI elements by views
     private void findViews()
     {
-        alarmName = (EditText) findViewById(R.id.eventName);
+        eventName = (EditText) findViewById(R.id.eventName);
         dPicker = (DatePicker) findViewById(R.id.datePicker);
-        findViewById(R.id.timePicker);
     }
 
     // UTILITY - Get date

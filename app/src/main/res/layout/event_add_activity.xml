@@ -28,14 +28,6 @@
             android:datePickerMode="spinner"
             android:calendarViewShown="false"/>
 
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/datePicker"
-
-            android:timePickerMode="spinner"/>
-
         <Button
             android:layout_width="378dp"
             android:layout_height="wrap_content"
