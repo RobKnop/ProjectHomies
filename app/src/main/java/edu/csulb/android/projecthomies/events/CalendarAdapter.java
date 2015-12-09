@@ -1,16 +1,7 @@
 package edu.csulb.android.projecthomies.events;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +9,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
 
 import edu.csulb.android.projecthomies.R;
 
@@ -258,7 +256,7 @@ public class CalendarAdapter extends BaseAdapter {
             if (date.equals(event_date)) {
 
                 Toast.makeText(context, "You have event on this date: " + event_date, Toast.LENGTH_LONG).show();
-                new AlertDialog.Builder(context)
+                /*new AlertDialog.Builder(context)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Date: " + event_date)
                         .setMessage("Event: " + event_message)
@@ -266,7 +264,7 @@ public class CalendarAdapter extends BaseAdapter {
                             public void onClick(DialogInterface dialog, int which) {
                                 act.finish();
                             }
-                        }).show();
+                        }).show();*/
                 break;
             }
         }
