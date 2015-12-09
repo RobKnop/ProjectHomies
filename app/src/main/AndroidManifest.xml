@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".HomePage"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.HomePage" />
 
