@@ -1,7 +1,6 @@
 package edu.csulb.android.projecthomies;
 
-import android.R;
-import android.app.Notification;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -13,7 +12,7 @@ import android.util.Log;
 
 /**
  * This service is started when an Alarm has been raised
- *
+ * <p/>
  * We pop a notification into the status bar for the user to click on
  * When the user clicks the notification a new activity is opened
  *
@@ -48,7 +47,7 @@ public class AlarmNotificationService extends Service {
         Log.i("LocalService", "Received start id " + startId + ": " + intent);
 
         // If this service was started by out AlarmTask intent then we want to show our notification
-        if(intent.getBooleanExtra(INTENT_NOTIFY, false))
+        if (intent.getBooleanExtra(INTENT_NOTIFY, false))
             showNotification();
 
         // We don't care if this service is stopped as we have already delivered our notification
@@ -70,7 +69,7 @@ public class AlarmNotificationService extends Service {
         // This is the 'title' of the notification
         CharSequence title = "Project Homies";
         // This is the icon to use on the notification
-        int icon = R.drawable.ic_dialog_alert;
+        int icon = R.drawable.ic_notification_connect;
         // This is the scrolling text of the notification
         CharSequence text = "Time to connect with your homies!";
         // What time to show on the notification
@@ -78,9 +77,9 @@ public class AlarmNotificationService extends Service {
 
         NotificationCompat.Builder notification =
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(icon)
-                .setContentTitle(title)
-                .setContentText(text);
+                        .setSmallIcon(icon)
+                        .setContentTitle(title)
+                        .setContentText(text);
 
         // The PendingIntent to launch our activity if the user selects this notification
         Intent resultIntent = new Intent(this, HomePage.class);
