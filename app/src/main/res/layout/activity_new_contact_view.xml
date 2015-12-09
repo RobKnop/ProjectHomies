@@ -1,12 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.csulb.android.projecthomies.NewContactView">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".EditContactView">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:hint="First"
+        android:id="@+id/firstNew"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:hint="Last"
+        android:id="@+id/lastNew"
+        android:layout_above="@+id/newCompany"
+        android:layout_toEndOf="@+id/profilePicNew" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Company"
+        android:ems="10"
+        android:id="@+id/newCompany"
+        android:layout_above="@+id/emailNew"
+        android:layout_alignStart="@+id/emailNew" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/profilePicNew"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/newCompany"
+        android:layout_toStartOf="@+id/firstNew" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailNew"
+        android:hint="Email Address"
+        android:layout_above="@+id/newAddress"
+        android:layout_toEndOf="@+id/profilePicNew" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/newAddress"
+        android:hint="Address"
+        android:layout_above="@+id/newBirthday"
+        android:layout_alignStart="@+id/emailNew" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/newBirthday"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/newAddress"
+        android:layout_alignEnd="@+id/newAddress"
+        android:hint="Birthday" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/notesNew"
+        android:layout_below="@+id/newBirthday"
+        android:layout_alignStart="@+id/newBirthday"
+        android:layout_alignParentBottom="true"
+        android:hint="Notes" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Photo"
+        android:id="@+id/newPhoto"
+        android:layout_below="@+id/profilePicNew"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
+

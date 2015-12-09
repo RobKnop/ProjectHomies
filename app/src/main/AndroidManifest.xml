@@ -30,6 +30,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NewContactView"
+            android:label="@string/title_activity_new_contacts"
+            android:parentActivityName=".HomePage">
+        </activity>
+        <activity
             android:name=".EditContactView"
             android:label="@string/title_activity_edit_contact"
             android:parentActivityName=".DetailedContactView">
@@ -53,7 +58,6 @@
             android:name=".AddReminder"
             android:label="Add Reminder"
             android:parentActivityName=".HomePage"></activity>
-        <activity android:name=".NewContactView"></activity>
     </application>
 
 </manifest>

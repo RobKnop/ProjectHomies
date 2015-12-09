@@ -33,6 +33,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
@@ -165,6 +166,8 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Snackbar.make(v, "Replace with your own amazing action3", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent p = new Intent(HomePage.this, NewContactView.class);
+                startActivityForResult(p, 2);
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +218,24 @@ public class HomePage extends AppCompatActivity {
         persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
         persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
 
-        SQLiteDatabase readable = new ContactsDatabase(this).getReadableDatabase();
+        ContactsDatabase db = new ContactsDatabase(getApplicationContext());
+        List<Integer> keys = db.getKeys();
+        List<String> firstNameLabels = db.getFirstNameLabels();
+        List<String> lastNameLabels = db.getLastNameLabels();
+        List<String> companyLabels = db.getCompanyLabels();
+        List<String> imageLocationLabels = db.getImageLocationLabels();
+
+        int size = keys.size();
+
+        if (!keys.isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                persons.add(new ContactsPageCardData(firstNameLabels.get(i) + " " + lastNameLabels.get(i), companyLabels.get(i)));
+            }
+        }
+
+
+
+
 
         String contactNameExt = "";
         String contactCompanyExt = "";
