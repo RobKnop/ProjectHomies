@@ -19,8 +19,8 @@ Group project for the mobile development class CECS 453 at CSULB.
 2. Set up Trello account: projecthomies
 3. Set up GitHub Repository: projecthomies
     - Robert Knop is Repository owner
-    - private repository
-4. Commit initial project files 
+    - Public repository (changed from private 12/8/15)
+4. Commit initial project files (11/8/15) - (RK)
 5. Finished Contact View (11/8/15) - (DC)
 6. Finished Add Contact (11/10/15) - (DC)
 7. Finished Custom list view for Main Page (11/12/15) - (DC)
