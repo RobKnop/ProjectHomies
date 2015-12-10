@@ -4,18 +4,14 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +21,6 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,9 +29,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class HomePage extends AppCompatActivity {
+import edu.csulb.android.projecthomies.events.AddEvent;
+import edu.csulb.android.projecthomies.events.AndroidListAdapter;
+import edu.csulb.android.projecthomies.events.CalendarCollection;
+import edu.csulb.android.projecthomies.events.CalenderActivity;
+
+public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<String> web;
     private ImageButton fab;
@@ -52,17 +51,14 @@ public class HomePage extends AppCompatActivity {
     private float offset3;
     private ArrayList<String> remindersList = new ArrayList<>();
     private ArrayAdapter<String> reminderAdapter;
+    private ListView lv_android;
+    private AndroidListAdapter list_adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
 
         ImageView imageView1 = (ImageView) findViewById(R.id.userProfilePic);
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.user_profile_pic);
@@ -93,7 +89,11 @@ public class HomePage extends AppCompatActivity {
         });
 
         // SETTING CONTACTS TO THE HOMEPAGE
-        /*RecyclerView rv;
+        /*
+        *
+        * TEST PURPOSE ONLY
+        * *
+        RecyclerView rv;
         ArrayList<ContactsPageCardData> persons;
 
         rv = (RecyclerView)findViewById(R.id.recycler_view);
@@ -123,7 +123,8 @@ public class HomePage extends AppCompatActivity {
                 Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
                 startActivity(i);
             }
-        });*/
+        });
+        */
 
         addContactCardsToHomePage();
         //
@@ -134,7 +135,18 @@ public class HomePage extends AppCompatActivity {
                 remindersList);
         lv.setAdapter(reminderAdapter);
 
-        final View contactCategory =  findViewById(R.id.card_view3);
+
+        CalendarCollection.date_collection_arr = new ArrayList<CalendarCollection>();
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-01", "John Birthday"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-04", "Client Meeting at 5 p.m."));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-06", "A Small Party at my office"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-02", "Marriage Anniversary"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-11", "Live Event and Concert of sonu"));
+
+
+        getWidget();
+
+        final View contactCategory = findViewById(R.id.card_view3);
         contactCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = contactCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -145,7 +157,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        final View remindersCategory =  findViewById(R.id.card_view2);
+        final View remindersCategory = findViewById(R.id.card_view2);
         remindersCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = remindersCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -156,7 +168,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        final View eventsCategory =  findViewById(R.id.card_view);
+        final View eventsCategory = findViewById(R.id.card_view);
         eventsCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = eventsCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -164,13 +176,6 @@ public class HomePage extends AppCompatActivity {
 
             public void onClick(View v) {
                 expanded = expandAndCollapse(v, expanded, targetHeight, initialHeight);
-            }
-        });
-
-        final Button mainEventsBtn = (Button) findViewById(R.id.mainEventsBtn);
-        mainEventsBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
             }
         });
 
@@ -197,8 +202,9 @@ public class HomePage extends AppCompatActivity {
         fabAction3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent i = new Intent(HomePage.this, AddEvent.class);
+                startActivityForResult(i, 2);
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -230,7 +236,7 @@ public class HomePage extends AppCompatActivity {
 
     // ADDING CONTACTCARDS TO THE HOMEPAGE
     private void addContactCardsToHomePage() {
-        RecyclerView rv = (RecyclerView)findViewById(R.id.recycler_view);
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_view);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
@@ -370,6 +376,7 @@ public class HomePage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     private boolean expandAndCollapse(final View v, boolean expanded, final int targetHeight, final int initialHeight) {
         final int heightDiff = targetHeight - initialHeight;
 
@@ -424,7 +431,42 @@ public class HomePage extends AppCompatActivity {
                 lv.setAdapter(reminderAdapter);
             }
         }
+        if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                String newReminder = data.getStringExtra("eventName");
+                String date = data.getStringExtra("date");
+                CalendarCollection.date_collection_arr.add(new CalendarCollection(date, newReminder));
+
+                lv_android = (ListView) findViewById(R.id.lv_android);
+                list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+                lv_android.setAdapter(list_adapter);
+
+            }
+        }
 
     }
+
+    public void getWidget() {
+        ImageButton btn_calender = (ImageButton) findViewById(R.id.btn_calender);
+        btn_calender.setOnClickListener(this);
+
+        lv_android = (ListView) findViewById(R.id.lv_android);
+        list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+        lv_android.setAdapter(list_adapter);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_calender:
+                startActivity(new Intent(HomePage.this, CalenderActivity.class));
+                break;
+            default:
+                break;
+        }
+
+    }
+
 
 }
