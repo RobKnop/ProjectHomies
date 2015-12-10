@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.csulb.android.projecthomies" >
+    package="edu.csulb.android.projecthomies">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/projecthomies_ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/app_name"
             android:statusBarColor="@android:color/black"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +34,17 @@
             android:label="@string/title_activity_detailed_contact_view"
             android:parentActivityName=".ContactsPage">
             <intent-filter>
-                <action android:name="edu.csulb.android.projecthomies.DetailedContactView"/>
+                <action android:name="edu.csulb.android.projecthomies.DetailedContactView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewContactView"
+            android:label="@string/title_activity_new_contacts"
+            android:parentActivityName=".HomePage">
+            <intent-filter>
+                <action android:name="edu.csulb.edu.android.projecthomies.NewContactView"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
@@ -44,9 +54,9 @@
             android:label="@string/title_activity_edit_contact"
             android:parentActivityName=".DetailedContactView">
             <intent-filter>
-                <action android:name="edu.csulb.android.projecthomies.EditContactView"/>
+                <action android:name="edu.csulb.android.projecthomies.EditContactView" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -54,9 +64,9 @@
             android:label="@string/title_activity_contacts_page"
             android:parentActivityName=".HomePage">
             <intent-filter>
-                <action android:name="edu.csulb.android.projecthomies.ContactsPage"/>
+                <action android:name="edu.csulb.android.projecthomies.ContactsPage" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -64,7 +74,6 @@
             android:label="Add Reminder"
             android:parentActivityName=".HomePage">
         </activity>
-
         <service android:name="AlarmService" />
         <service android:name=".AlarmNotificationService" />
         <activity

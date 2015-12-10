@@ -2,6 +2,7 @@ package edu.csulb.android.projecthomies;
 
 // CONTACTS CARD DATA
 public class ContactsPageCardData {
+
     private String name;
     private String company;
     private int imageID;

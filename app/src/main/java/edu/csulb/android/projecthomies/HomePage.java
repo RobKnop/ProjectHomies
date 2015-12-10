@@ -9,9 +9,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +21,6 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,6 +28,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import edu.csulb.android.projecthomies.events.AddEvent;
 import edu.csulb.android.projecthomies.events.AndroidListAdapter;
@@ -59,11 +59,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }*/
 
         ImageView imageView1 = (ImageView) findViewById(R.id.userProfilePic);
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.user_profile_pic);
@@ -93,6 +88,47 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        // SETTING CONTACTS TO THE HOMEPAGE
+        /*
+        *
+        * TEST PURPOSE ONLY
+        * *
+        RecyclerView rv;
+        ArrayList<ContactsPageCardData> persons;
+
+        rv = (RecyclerView)findViewById(R.id.recycler_view);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        // TEST CARDS
+        // To Do: Add Contacts to the HomePage
+        persons = new ArrayList<>();
+        persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
+        persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
+        persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
+        persons.add(new ContactsPageCardData("Molie Vasquez", "Foodie"));
+        persons.add(new ContactsPageCardData("Dee Williams", "Promoter"));
+        persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
+        persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
+        persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });
+        */
+
+        addContactCardsToHomePage();
+        //
+
         ListView lv = (ListView) findViewById(R.id.listView);
         reminderAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
@@ -110,7 +146,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         getWidget();
 
-        final View contactCategory =  findViewById(R.id.card_view3);
+        final View contactCategory = findViewById(R.id.card_view3);
         contactCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = contactCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -121,7 +157,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        final View remindersCategory =  findViewById(R.id.card_view2);
+        final View remindersCategory = findViewById(R.id.card_view2);
         remindersCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = remindersCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -132,7 +168,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        final View eventsCategory =  findViewById(R.id.card_view);
+        final View eventsCategory = findViewById(R.id.card_view);
         eventsCategory.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
             final int targetHeight = eventsCategory.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -143,18 +179,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-
-        final Button mainContactBtn = (Button) findViewById(R.id.mainContactBtn);
-        mainContactBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent i = new Intent("edu.csulb.android.projecthomies.ContactsPage");
-                startActivity(i);
-
-            }
-        });
-
         final ViewGroup fabContainer = (ViewGroup) findViewById(R.id.fab_container);
         fabContainer.setZ(10000);
         fab = (ImageButton) findViewById(R.id.fab);
@@ -162,8 +186,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         fabAction1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent p = new Intent("edu.csulb.edu.android.projecthomies.NewContactView");
+                startActivity(p);
             }
         });
         fabAction2 = findViewById(R.id.fab_action_2);
@@ -178,6 +202,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         fabAction3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(HomePage.this, AddEvent.class);
                 startActivityForResult(i, 2);
             }
@@ -207,6 +232,88 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+    }
+
+    // ADDING CONTACTCARDS TO THE HOMEPAGE
+    private void addContactCardsToHomePage() {
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_view);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        ContactRepo repo = new ContactRepo(this);
+
+        ArrayList<HashMap<String, String>> contactList = repo.getContactList();
+
+        String firstName;
+        String lastName;
+        String companyExtr;
+        ArrayList<ContactsPageCardData> persons = new ArrayList<>();
+
+        int sizeOf = contactList.size();
+        for (int i = 0; i < sizeOf; i++) {
+            HashMap<String, String> pulled = contactList.get(i);
+            firstName = pulled.get("first");
+            lastName = pulled.get("last");
+            companyExtr = pulled.get("company");
+            persons.add(new ContactsPageCardData(firstName + " " + lastName, companyExtr));
+        }
+
+        // TEST CARDS
+        // To Do: Add Contacts to the HomePage
+        persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
+        persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
+        persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
+        persons.add(new ContactsPageCardData("Molie Vasquez", "Foodie"));
+        persons.add(new ContactsPageCardData("Dee Williams", "Promoter"));
+        persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
+        persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
+        persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });
+
+        /*ContactsDatabase db = new ContactsDatabase(getApplicationContext());
+        List<Integer> keys = db.getKeys();
+        List<String> firstNameLabels = db.getFirstNameLabels();
+        List<String> lastNameLabels = db.getLastNameLabels();
+        List<String> companyLabels = db.getCompanyLabels();
+        List<String> imageLocationLabels = db.getImageLocationLabels();
+
+        int size = keys.size();
+
+        if (!keys.isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                persons.add(new ContactsPageCardData(firstNameLabels.get(i) + " " + lastNameLabels.get(i), companyLabels.get(i)));
+            }
+        }
+
+
+
+
+
+        String contactNameExt = "";
+        String contactCompanyExt = "";
+        String contactPhotoExt = "";
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });*/
     }
 
     private void collapseFab() {
@@ -269,6 +376,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         return super.onOptionsItemSelected(item);
     }
+
     private boolean expandAndCollapse(final View v, boolean expanded, final int targetHeight, final int initialHeight) {
         final int heightDiff = targetHeight - initialHeight;
 
@@ -321,7 +429,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                         android.R.layout.simple_list_item_1,
                         remindersList);
                 lv.setAdapter(reminderAdapter);
-
             }
         }
         if (requestCode == 2) {

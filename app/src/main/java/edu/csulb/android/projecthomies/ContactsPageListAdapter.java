@@ -71,7 +71,7 @@ public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageLi
     public void onBindViewHolder(PersonViewHolder personViewHolder, int i) {
         personViewHolder.personName.setText(persons.get(i).getName());
         personViewHolder.personCompany.setText(persons.get(i).getCompany());
-        personViewHolder.personPhoto.setImageResource(persons.get(i).getImageID());
+//        personViewHolder.personPhoto.setImageResource(persons.get(i).getImageID());
     }
 
     @Override
