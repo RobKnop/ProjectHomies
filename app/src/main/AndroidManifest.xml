@@ -33,6 +33,11 @@
             android:name=".NewContactView"
             android:label="@string/title_activity_new_contacts"
             android:parentActivityName=".HomePage">
+            <intent-filter>
+                <action android:name="edu.csulb.edu.android.projecthomies.NewContactView"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".EditContactView"

@@ -1,10 +1,10 @@
 package edu.csulb.android.projecthomies;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +12,21 @@ import java.util.List;
 public class ContactsDatabase extends SQLiteOpenHelper {
 
     public static String DB_NAME = "contactsqlite";
-    public static int VERSION = 1;
-    private static final String TABLE_LABELS = "contacts";
-    public static final String KEY_ID = "_id";
-    public static final String FIRST_NAME = "first_n";
-    public static final String LAST_NAME = "last_n";
-    public static final String COMPANY = "company";
-    public static final String EMAIL = "email";
-    public static final String ADDRESS = "address";
-    public static final String BIRTHDAY = "birthday";
-    public static final String NOTES = "notes";
-    public static final String IMG_LOCATION = "img location";
 
+    public static int VERSION = 1;
+    private static String TAG = "ContactsDatabase";
+
+    /*private static final String TABLE_LABELS = "contacts";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_FIRST_NAME = "first_n";
+    public static final String KEY_LAST_NAME = "last_n";
+    public static final String KEY_COMPANY = "company";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_ADDRESS = "address";
+    public static final String KEY_BIRTHDAY = "birthday";
+    public static final String KEY_NOTES = "notes";
+    public static final String IMG_LOCATION = "img location";
+*/
     private SQLiteDatabase mDB;
 
     public ContactsDatabase(Context context) {
@@ -33,57 +36,60 @@ public class ContactsDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql =     "CREATE TABLE " + TABLE_LABELS + "(" +
-                KEY_ID + " INTEGER PRIMARY KEY," +
-                LAST_NAME + " TEXT," +
-                FIRST_NAME + " TEXT," +
-                COMPANY + " TEXT," +
-                EMAIL + " TEXT," +
-                ADDRESS + " TEXT," +
-                BIRTHDAY + " TEXT," +
-                NOTES + " TEXT," +
-                IMG_LOCATION + " TEXT" +
-                ")";
-
-        db.execSQL(sql);
+        String sql =     "CREATE TABLE " + Contact.TABLE_LABELS + "(" +
+                Contact.KEY_ID + " INTEGER PRIMARY KEY," +
+                Contact.KEY_LAST_NAME + " TEXT," +
+                Contact.KEY_FIRST_NAME + " TEXT," +
+                Contact.KEY_COMPANY + " TEXT," +
+                Contact.KEY_EMAIL + " TEXT," +
+                Contact.KEY_ADDRESS + " TEXT," +
+                Contact.KEY_BIRTHDAY + " TEXT," +
+                Contact.KEY_NOTES + " TEXT," +
+                Contact.IMG_LOCATION + " TEXT" +
+                ");";
+        try {
+            db.execSQL(sql);
+        } catch (Exception e) {
+            Log.d(TAG, "Error!");
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int
             oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LABELS);
+        db.execSQL("DROP TABLE IF EXISTS " + Contact.TABLE_LABELS + ";");
         // Create tables again
         onCreate(db);
     }
-
+/*
     public long insertLabel(ContentValues contentValues){
-        long rowID = mDB.insert(TABLE_LABELS, null, contentValues);
+        long rowID = mDB.insert(Contact.TABLE_LABELS, null, contentValues);
         return rowID;
     }
 
     public int deleteAllLabels(){
-        int cnt = mDB.delete(TABLE_LABELS, null, null);
+        int cnt = mDB.delete(Contact.TABLE_LABELS, null, null);
         return cnt;
     }
 
     public Cursor getAllLabels(){
-        return mDB.query(TABLE_LABELS, new String[] {
-                KEY_ID,
-                FIRST_NAME,
-                LAST_NAME,
-                COMPANY,
-                EMAIL,
-                ADDRESS,
-                NOTES,
-                IMG_LOCATION} , null, null, null, null, null);
+        return mDB.query(Contact.TABLE_LABELS, new String[] {
+                Contact.KEY_ID,
+                Contact.KEY_FIRST_NAME,
+                Contact.KEY_LAST_NAME,
+                Contact.KEY_COMPANY,
+                Contact.KEY_EMAIL,
+                Contact.KEY_ADDRESS,
+                Contact.KEY_NOTES,
+                Contact.IMG_LOCATION} , null, null, null, null, null);
     }
 
     public List<Integer> getKeys() {
         List<Integer> labels = new ArrayList<Integer>();
         // Select All Query
-        String selectQuery = "SELECT " + KEY_ID + " FROM " +
-                TABLE_LABELS;
+        String selectQuery = "SELECT " + Contact.KEY_ID + " FROM " +
+                Contact.TABLE_LABELS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -102,8 +108,8 @@ public class ContactsDatabase extends SQLiteOpenHelper {
     public List<String> getFirstNameLabels() {
         List<String> labels = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT " + FIRST_NAME + " FROM " +
-                TABLE_LABELS;
+        String selectQuery = "SELECT " + Contact.KEY_FIRST_NAME + " FROM " +
+                Contact.TABLE_LABELS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -117,13 +123,13 @@ public class ContactsDatabase extends SQLiteOpenHelper {
         db.close();
         // returning labels
         return labels;
-    }
+    }*/
 
     public List<String> getLastNameLabels() {
         List<String> labels = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT " + LAST_NAME + " FROM " +
-                TABLE_LABELS;
+        String selectQuery = "SELECT " + Contact.KEY_LAST_NAME + " FROM " +
+                Contact.TABLE_LABELS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -142,8 +148,8 @@ public class ContactsDatabase extends SQLiteOpenHelper {
     public List<String> getImageLocationLabels() {
         List<String> labels = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT " + IMG_LOCATION + " FROM " +
-                TABLE_LABELS;
+        String selectQuery = "SELECT " + Contact.IMG_LOCATION + " FROM " +
+                Contact.TABLE_LABELS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
@@ -162,8 +168,8 @@ public class ContactsDatabase extends SQLiteOpenHelper {
     public List<String> getCompanyLabels() {
         List<String> labels = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT " + COMPANY + " FROM " +
-                TABLE_LABELS;
+        String selectQuery = "SELECT " + Contact.KEY_COMPANY + " FROM " +
+                Contact.TABLE_LABELS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list

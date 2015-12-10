@@ -62,18 +62,6 @@ public class EditContactView extends AppCompatActivity {
         String birthday_str = birthday.getText().toString();
         String notes_str = notes.getText().toString();
 
-        newValues.put(ContactsDatabase.FIRST_NAME, f_name);
-        newValues.put(ContactsDatabase.LAST_NAME, l_name);
-        newValues.put(ContactsDatabase.COMPANY, company_str);
-        newValues.put(ContactsDatabase.EMAIL, email_str);
-        newValues.put(ContactsDatabase.ADDRESS, address_str);
-        newValues.put(ContactsDatabase.BIRTHDAY, birthday_str);
-        newValues.put(ContactsDatabase.NOTES, notes_str);
-
-        String selection = ContactsDatabase.KEY_ID + " LIKE? ";
-        String[] selectionArgs = {"1"};
-        // PUT THIS SOMEWHERE ELSE FOR NOW
-        //int count = writeable.update(ContactsDatabase.DB_NAME, newValues, selection, selectionArgs);
     }
     private Bitmap yourSelectedImage = null;
 

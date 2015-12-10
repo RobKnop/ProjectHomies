@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 
@@ -27,18 +28,16 @@ public class NewContactView extends AppCompatActivity {
     private Button changePhoto;
     private Button saveContact;
     private ImageView image;
+    private int _Contact_Id = 0;
+
     private static final int SELECT_PHOTO = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_contact);
+        setContentView(R.layout.activity_new_contact_view);
 
         changePhotoID();
-
-        SQLiteDatabase writeable = new ContactsDatabase(this).getWritableDatabase();
-        SQLiteDatabase readable = new ContactsDatabase(this).getReadableDatabase();
-        ContentValues newValues = new ContentValues();
 
         first_n = (EditText)findViewById(R.id.firstNew);
         last_n = (EditText)findViewById(R.id.lastNew);
@@ -48,6 +47,8 @@ public class NewContactView extends AppCompatActivity {
         birthday = (EditText)findViewById(R.id.newBirthday);
         notes = (EditText)findViewById(R.id.notesNew);
         image = (ImageView)findViewById(R.id.profilePicNew);
+
+        saveContact = (Button)findViewById(R.id.saveButton);
 
         saveContact();
 
@@ -75,39 +76,56 @@ public class NewContactView extends AppCompatActivity {
     }
 
     public void saveContact() {
-        final SQLiteDatabase writeable = new ContactsDatabase(this).getWritableDatabase();
-        saveContact = (Button)findViewById(R.id.saveButton);
 
-        final ContentValues newValues = new ContentValues();
+        /*
+        _Student_Id =0;
+        Intent intent = getIntent();
+        _Student_Id =intent.getIntExtra("student_Id", 0);
+        StudentRepo repo = new StudentRepo(this);
+        Student student = new Student();
+        student = repo.getContactById(_Student_Id);
 
-        String f_name = first_n.getText().toString();
-        String l_name = last_n.getText().toString();
-        String company_str = company.getText().toString();
-        String email_str = email.getText().toString();
-        String address_str = address.getText().toString();
-        String birthday_str = birthday.getText().toString();
-        String notes_str = notes.getText().toString();
-
-        newValues.put(ContactsDatabase.FIRST_NAME, f_name);
-        newValues.put(ContactsDatabase.LAST_NAME, l_name);
-        newValues.put(ContactsDatabase.COMPANY, company_str);
-        newValues.put(ContactsDatabase.EMAIL, email_str);
-        newValues.put(ContactsDatabase.ADDRESS, address_str);
-        newValues.put(ContactsDatabase.BIRTHDAY, birthday_str);
-        newValues.put(ContactsDatabase.NOTES, notes_str);
+        editTextAge.setText(String.valueOf(student.age));
+        editTextName.setText(student.name);
+        editTextEmail.setText(student.email);
+         */
+        int _Contact_id = 0;
+        Intent intent = getIntent();
+        _Contact_Id = intent.getIntExtra("contact_Id", 0);
+        ContactRepo repo = new ContactRepo(this);
+        Contact contact = new Contact();
+        contact = repo.getContactById(_Contact_id);
 
         saveContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String selection = ContactsDatabase.KEY_ID + " LIKE? ";
-                String[] selectionArgs = {"1"};
-                int count = writeable.update(ContactsDatabase.DB_NAME, newValues, selection, selectionArgs);
+                ContactRepo repo = new ContactRepo(getApplicationContext());
+                Contact student = new Contact();
+
+                student.first_name_data = first_n.getText().toString();
+                student.last_name_data = last_n.getText().toString();
+                student.company_data = company.getText().toString();
+                student.email_data = email.getText().toString();
+                student.address_data = address.getText().toString();
+                student.birthday_data = birthday.getText().toString();
+                student.notes_data = notes.getText().toString();
+
+                //Save location of image into database?
+
+                if (_Contact_Id == 0){
+                    _Contact_Id = repo.insert(student);
+                    Toast.makeText(getApplicationContext(),"New Contact Added!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    repo.update(student);
+                    Toast.makeText(getApplicationContext(),"Student Record updated",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     public void changePhotoID() {
-        changePhoto = (Button)findViewById(R.id.editphoto);
+        changePhoto = (Button)findViewById(R.id.newPhoto);
         changePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

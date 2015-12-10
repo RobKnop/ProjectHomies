@@ -33,6 +33,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity {
@@ -92,6 +93,38 @@ public class HomePage extends AppCompatActivity {
         });
 
         // SETTING CONTACTS TO THE HOMEPAGE
+        /*RecyclerView rv;
+        ArrayList<ContactsPageCardData> persons;
+
+        rv = (RecyclerView)findViewById(R.id.recycler_view);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        // TEST CARDS
+        // To Do: Add Contacts to the HomePage
+        persons = new ArrayList<>();
+        persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
+        persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
+        persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
+        persons.add(new ContactsPageCardData("Molie Vasquez", "Foodie"));
+        persons.add(new ContactsPageCardData("Dee Williams", "Promoter"));
+        persons.add(new ContactsPageCardData("Lynn Thompson", "Writer"));
+        persons.add(new ContactsPageCardData("Dawn Zaragoza", "Book Worm"));
+        persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
+        persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
+
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });*/
+
         addContactCardsToHomePage();
         //
 
@@ -148,8 +181,8 @@ public class HomePage extends AppCompatActivity {
         fabAction1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent p = new Intent("edu.csulb.edu.android.projecthomies.NewContactView");
+                startActivity(p);
             }
         });
         fabAction2 = findViewById(R.id.fab_action_2);
@@ -164,10 +197,8 @@ public class HomePage extends AppCompatActivity {
         fabAction3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own amazing action3", Snackbar.LENGTH_LONG)
+                Snackbar.make(v, "Replace with your own amazing action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent p = new Intent(HomePage.this, NewContactView.class);
-                startActivityForResult(p, 2);
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -205,9 +236,26 @@ public class HomePage extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
+        ContactRepo repo = new ContactRepo(this);
+
+        ArrayList<HashMap<String, String>> contactList = repo.getContactList();
+
+        String firstName;
+        String lastName;
+        String companyExtr;
+        ArrayList<ContactsPageCardData> persons = new ArrayList<>();
+
+        int sizeOf = contactList.size();
+        for (int i = 0; i < sizeOf; i++) {
+            HashMap<String, String> pulled = contactList.get(i);
+            firstName = pulled.get("first");
+            lastName = pulled.get("last");
+            companyExtr = pulled.get("company");
+            persons.add(new ContactsPageCardData(firstName + " " + lastName, companyExtr));
+        }
+
         // TEST CARDS
         // To Do: Add Contacts to the HomePage
-        ArrayList<ContactsPageCardData> persons = new ArrayList<>();
         persons.add(new ContactsPageCardData("Emma Wilson", "BIO 200"));
         persons.add(new ContactsPageCardData("Lavery Maiss", "Fitness Instructor"));
         persons.add(new ContactsPageCardData("Lillie Watts", "Movie Critic"));
@@ -218,7 +266,17 @@ public class HomePage extends AppCompatActivity {
         persons.add(new ContactsPageCardData("Dean Soto", "UBER Driver"));
         persons.add(new ContactsPageCardData("Melinda Houchins", "Professional Wrestler"));
 
-        ContactsDatabase db = new ContactsDatabase(getApplicationContext());
+        ContactsPageListAdapter adapter = new ContactsPageListAdapter(persons);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                startActivity(i);
+            }
+        });
+
+        /*ContactsDatabase db = new ContactsDatabase(getApplicationContext());
         List<Integer> keys = db.getKeys();
         List<String> firstNameLabels = db.getFirstNameLabels();
         List<String> lastNameLabels = db.getLastNameLabels();
@@ -249,7 +307,7 @@ public class HomePage extends AppCompatActivity {
                 Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
                 startActivity(i);
             }
-        });
+        });*/
     }
 
     private void collapseFab() {
