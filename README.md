@@ -32,7 +32,7 @@ Group project for the mobile development class CECS 453 at CSULB.
 11. Basic Reminder Functionality (12/3/15) - (EH)
 12. Home Page Personal Summary (12/3/15) - (RK)
 13. Changed Homepage Buttons to EditTexts (12/3/14) - (DC)
-14. Implemented Fragments on Home Page (12/6/15) - (RK)
+14. Implemented Main Categories onto Home Page (12/6/15) - (RK)
 15. Polish Home Page Layout (12/6/15) - (RK)
 16. Finished Logo (12/7/15) - (EH)
 17. Basic Events View (12/8/15) - (RK)
