@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".homepage.SplashScreenActivity"
             android:label="@string/app_name"
             android:statusBarColor="@android:color/black"
             android:theme="@style/AppTheme.NoActionBar">
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomePage"
+            android:name=".homepage.HomePage"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -42,7 +42,7 @@
         <activity
             android:name=".contacs.ContactNewViewActivity"
             android:label="@string/title_activity_new_contacts"
-            android:parentActivityName=".HomePage">
+            android:parentActivityName=".homepage.HomePage">
             <intent-filter>
                 <action android:name="edu.csulb.edu.android.projecthomies.NewContactView"/>
 
@@ -62,7 +62,7 @@
         <activity
             android:name=".contacs.ContactsPage"
             android:label="@string/title_activity_contacts_page"
-            android:parentActivityName=".HomePage">
+            android:parentActivityName=".homepage.HomePage">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.ContactsPage" />
 
@@ -70,12 +70,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddReminder"
+            android:name=".reminders.AddReminder"
             android:label="Add Reminder"
-            android:parentActivityName=".HomePage">
+            android:parentActivityName=".homepage.HomePage">
         </activity>
-        <service android:name="AlarmService" />
-        <service android:name=".AlarmNotificationService" />
+        <service android:name=".reminders.AlarmService" />
+        <service android:name=".reminders.AlarmNotificationService" />
         <activity
             android:name=".events.AddEvent"
             android:label="Add Event">

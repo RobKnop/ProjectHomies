@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.reminders;
 
 
 import android.app.NotificationManager;
@@ -9,6 +9,9 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import edu.csulb.android.projecthomies.homepage.HomePage;
+import edu.csulb.android.projecthomies.R;
 
 /**
  * This service is started when an Alarm has been raised

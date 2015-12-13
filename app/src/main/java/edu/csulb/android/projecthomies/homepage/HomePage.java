@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.homepage;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -30,6 +30,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.csulb.android.projecthomies.R;
 import edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity;
 import edu.csulb.android.projecthomies.contacs.ContactNewViewActivity;
 import edu.csulb.android.projecthomies.contacs.ContactRepo;
@@ -39,6 +40,7 @@ import edu.csulb.android.projecthomies.events.AddEvent;
 import edu.csulb.android.projecthomies.events.AndroidListAdapter;
 import edu.csulb.android.projecthomies.events.CalendarCollection;
 import edu.csulb.android.projecthomies.events.CalenderActivity;
+import edu.csulb.android.projecthomies.reminders.AddReminder;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
