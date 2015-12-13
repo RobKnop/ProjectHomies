@@ -79,7 +79,7 @@ public class CalenderActivity extends Activity {
                 }
                 ((CalendarAdapter) parent.getAdapter()).setSelected(v,position);
 
-                ((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate, CalenderActivity.this);
+                ((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate);
             }
             
         });

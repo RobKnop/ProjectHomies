@@ -26,7 +26,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -143,7 +142,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         lv.setAdapter(reminderAdapter);
 
 
-        CalendarCollection.date_collection_arr = new ArrayList<CalendarCollection>();
+        CalendarCollection.date_collection_arr = new ArrayList<>();
         CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-01", "John Birthday"));
         CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-04", "Client Meeting at 5 p.m."));
         CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-12-06", "A Small Party at my office"));

@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:onClick="createAlarm"
             android:text="@string/btn_event_adding_save" />
-        
+
     </LinearLayout>
 
 </ScrollView>

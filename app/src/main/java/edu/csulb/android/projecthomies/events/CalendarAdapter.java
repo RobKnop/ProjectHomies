@@ -1,6 +1,5 @@
 package edu.csulb.android.projecthomies.events;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -28,13 +27,10 @@ public class CalendarAdapter extends BaseAdapter {
      * calendar instance for previous month for getting complete view
      */
     public GregorianCalendar pmonthmaxset;
-    private GregorianCalendar selectedDate;
     int firstDay;
     int maxWeeknumber;
     int maxP;
     int calMaxP;
-    int lastWeekDay;
-    int leftDays;
     int mnthlength;
     String itemvalue, curentDateString;
     DateFormat df;
@@ -46,14 +42,14 @@ public class CalendarAdapter extends BaseAdapter {
 
     public CalendarAdapter(Context context, GregorianCalendar monthCalendar, ArrayList<CalendarCollection> date_collection_arr) {
         this.date_collection_arr = date_collection_arr;
-        CalendarAdapter.day_string = new ArrayList<String>();
+        CalendarAdapter.day_string = new ArrayList<>();
         Locale.setDefault(Locale.US);
         month = monthCalendar;
-        selectedDate = (GregorianCalendar) monthCalendar.clone();
+        GregorianCalendar selectedDate = (GregorianCalendar) monthCalendar.clone();
         this.context = context;
         month.set(GregorianCalendar.DAY_OF_MONTH, 1);
 
-        this.items = new ArrayList<String>();
+        this.items = new ArrayList<>();
         df = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         curentDateString = df.format(selectedDate.getTime());
         refreshDays();
@@ -90,13 +86,10 @@ public class CalendarAdapter extends BaseAdapter {
             LayoutInflater vi = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.li_events_cal, null);
-
         }
-
 
         dayView = (TextView) v.findViewById(R.id.date);
         String[] separatedTime = day_string.get(position).split("-");
-
 
         String gridvalue = separatedTime[2].replaceFirst("^0*", "");
         if ((Integer.parseInt(gridvalue) > 1) && (position < firstDay)) {
@@ -112,14 +105,12 @@ public class CalendarAdapter extends BaseAdapter {
             dayView.setTextColor(Color.BLACK);
         }
 
-
         if (day_string.get(position).equals(curentDateString)) {
 
             v.setBackgroundColor(Color.RED);
         } else {
             v.setBackgroundColor(Color.parseColor("#ffffff"));
         }
-
 
         dayView.setText(gridvalue);
 
@@ -157,17 +148,10 @@ public class CalendarAdapter extends BaseAdapter {
 
         int len = day_string.size();
         if (len > pos) {
-            if (day_string.get(pos).equals(curentDateString)) {
-
-            } else {
-
+            if (!day_string.get(pos).equals(curentDateString)) {
                 previousView = view;
-
             }
-
         }
-
-
         return view;
     }
 
@@ -244,14 +228,12 @@ public class CalendarAdapter extends BaseAdapter {
     }
 
 
-    public void getPositionList(String date, final Activity act) {
+    public void getPositionList(String date) {
 
         int len = CalendarCollection.date_collection_arr.size();
         for (int i = 0; i < len; i++) {
             CalendarCollection cal_collection = CalendarCollection.date_collection_arr.get(i);
             String event_date = cal_collection.date;
-
-            String event_message = cal_collection.event_message;
 
             if (date.equals(event_date)) {
 

@@ -17,6 +17,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import edu.csulb.android.projecthomies.R;
 
@@ -55,7 +56,7 @@ public class AddEvent extends AppCompatActivity
     {
         String alarm = eventName.getText().toString();
         Date date = getDateFromDatePicket(dPicker);
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         String s = formatter.format(date);
         Log.v("DATE", s);
 
