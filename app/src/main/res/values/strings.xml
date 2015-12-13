@@ -11,4 +11,10 @@
     <string name="saveReminder">Save Reminder</string>
     <string name="ph_event_adding_name">Event name</string>
     <string name="btn_event_adding_save">Save Event</string>
+    <string name="title_category_favorites">Favorites</string>
+    <string name="title_welcome_user">Welcome Robert</string>
+    <string name="imgv_descrip_userprofile">profilePic</string>
+    <string name="title_category_events">Events</string>
+    <string name="title_category_reminders">Reminders</string>
+    <string name="title_category_contacts">Contacts</string>
 </resources>
