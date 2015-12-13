@@ -42,9 +42,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
     private boolean expanded = false;
 
-    private View fabAction1;
-    private View fabAction2;
-    private View fabAction3;
+    private View fabAddContacts;
+    private View fabAddReminder;
+    private View fabAddEvent;
 
     private float offset1;
     private float offset2;
@@ -182,24 +182,24 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         final ViewGroup fabContainer = (ViewGroup) findViewById(R.id.fab_container);
         fabContainer.setZ(10000);
         fab = (ImageButton) findViewById(R.id.fab);
-        fabAction1 = findViewById(R.id.fab_action_1);
-        fabAction1.setOnClickListener(new View.OnClickListener() {
+        fabAddContacts = findViewById(R.id.fab_action_contact);
+        fabAddContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent p = new Intent("edu.csulb.edu.android.projecthomies.NewContactView");
                 startActivity(p);
             }
         });
-        fabAction2 = findViewById(R.id.fab_action_2);
-        fabAction2.setOnClickListener(new View.OnClickListener() {
+        fabAddReminder = findViewById(R.id.fab_action_reminder);
+        fabAddReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomePage.this, AddReminder.class);
                 startActivityForResult(i, 1);
             }
         });
-        fabAction3 = findViewById(R.id.fab_action_3);
-        fabAction3.setOnClickListener(new View.OnClickListener() {
+        fabAddEvent = findViewById(R.id.fab_action_event);
+        fabAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -222,12 +222,12 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             @Override
             public boolean onPreDraw() {
                 fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
-                offset1 = fab.getY() - fabAction1.getY();
-                fabAction1.setTranslationY(offset1);
-                offset2 = fab.getY() - fabAction2.getY();
-                fabAction2.setTranslationY(offset2);
-                offset3 = fab.getY() - fabAction3.getY();
-                fabAction3.setTranslationY(offset3);
+                offset1 = fab.getY() - fabAddContacts.getY();
+                fabAddContacts.setTranslationY(offset1);
+                offset2 = fab.getY() - fabAddReminder.getY();
+                fabAddReminder.setTranslationY(offset2);
+                offset3 = fab.getY() - fabAddEvent.getY();
+                fabAddEvent.setTranslationY(offset3);
                 return true;
             }
         });
@@ -319,9 +319,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     private void collapseFab() {
         fab.setImageResource(R.drawable.animated_minus);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(createCollapseAnimator(fabAction1, offset1),
-                createCollapseAnimator(fabAction2, offset2),
-                createCollapseAnimator(fabAction3, offset3));
+        animatorSet.playTogether(createCollapseAnimator(fabAddContacts, offset1),
+                createCollapseAnimator(fabAddReminder, offset2),
+                createCollapseAnimator(fabAddEvent, offset3));
         animatorSet.start();
         animateFab();
     }
@@ -329,9 +329,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     private void expandFab() {
         fab.setImageResource(R.drawable.animated_plus);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(createExpandAnimator(fabAction1, offset1),
-                createExpandAnimator(fabAction2, offset2),
-                createExpandAnimator(fabAction3, offset3));
+        animatorSet.playTogether(createExpandAnimator(fabAddContacts, offset1),
+                createExpandAnimator(fabAddReminder, offset2),
+                createExpandAnimator(fabAddEvent, offset3));
         animatorSet.start();
         animateFab();
     }
