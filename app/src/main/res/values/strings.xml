@@ -9,4 +9,6 @@
     <string name="title_activity_new_contacts">New Contact</string>
     <string name="reminderDescription">Reminder description</string>
     <string name="saveReminder">Save Reminder</string>
+    <string name="ph_event_adding_name">Event name</string>
+    <string name="btn_event_adding_save">Save Event</string>
 </resources>
