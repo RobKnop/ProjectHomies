@@ -30,9 +30,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailedContactView"
+            android:name=".contacs.ContactDetailedViewActivity"
             android:label="@string/title_activity_detailed_contact_view"
-            android:parentActivityName=".ContactsPage">
+            android:parentActivityName=".contacs.ContactsPage">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.DetailedContactView" />
 
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewContactView"
+            android:name=".contacs.ContactNewViewActivity"
             android:label="@string/title_activity_new_contacts"
             android:parentActivityName=".HomePage">
             <intent-filter>
@@ -50,9 +50,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditContactView"
+            android:name=".contacs.ContactEditViewActivity"
             android:label="@string/title_activity_edit_contact"
-            android:parentActivityName=".DetailedContactView">
+            android:parentActivityName=".contacs.ContactDetailedViewActivity">
             <intent-filter>
                 <action android:name="edu.csulb.android.projecthomies.EditContactView" />
 
@@ -60,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ContactsPage"
+            android:name=".contacs.ContactsPage"
             android:label="@string/title_activity_contacts_page"
             android:parentActivityName=".HomePage">
             <intent-filter>

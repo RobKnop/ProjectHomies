@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 /**
  * Created by Dustin on 12/9/2015.

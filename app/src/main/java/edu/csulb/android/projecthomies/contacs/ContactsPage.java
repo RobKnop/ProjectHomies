@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.csulb.android.projecthomies.R;
 
 
 // SHOWS ALL CONTACTS
@@ -52,7 +54,7 @@ public class ContactsPage extends Activity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d(TAG, "onItemClick position: " + position);
-                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                Intent i = new Intent("edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity");
                 startActivity(i);
             }
         });
@@ -79,7 +81,7 @@ public class ContactsPage extends Activity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d(TAG, "onItemClick position: " + position);
-                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                Intent i = new Intent("edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity");
                 startActivity(i);
             }
         });

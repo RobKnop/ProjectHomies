@@ -30,6 +30,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity;
+import edu.csulb.android.projecthomies.contacs.ContactNewViewActivity;
+import edu.csulb.android.projecthomies.contacs.ContactRepo;
+import edu.csulb.android.projecthomies.contacs.ContactsPageCardData;
+import edu.csulb.android.projecthomies.contacs.ContactsPageListAdapter;
 import edu.csulb.android.projecthomies.events.AddEvent;
 import edu.csulb.android.projecthomies.events.AndroidListAdapter;
 import edu.csulb.android.projecthomies.events.CalendarCollection;
@@ -120,7 +125,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                Intent i = new Intent("edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity");
                 startActivity(i);
             }
         });
@@ -186,7 +191,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         fabAddContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent p = new Intent("edu.csulb.edu.android.projecthomies.NewContactView");
+                Intent p = new Intent(HomePage.this, ContactNewViewActivity.class);
                 startActivity(p);
             }
         });
@@ -277,7 +282,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                Intent i = new Intent(HomePage.this, ContactDetailedViewActivity.class);
                 startActivity(i);
             }
         });
@@ -310,7 +315,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         adapter.setOnItemClickListener(new ContactsPageListAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Intent i = new Intent("edu.csulb.android.projecthomies.DetailedContactView");
+                Intent i = new Intent("edu.csulb.android.projecthomies.contacs.ContactDetailedViewActivity");
                 startActivity(i);
             }
         });*/

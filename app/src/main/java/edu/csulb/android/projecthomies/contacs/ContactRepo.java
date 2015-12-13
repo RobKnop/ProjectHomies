@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 import android.content.ContentValues;
 import android.content.Context;

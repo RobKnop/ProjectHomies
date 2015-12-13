@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import edu.csulb.android.projecthomies.R;
 
 // ADAPTER CLASS FOR CONTACTS
 public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageListAdapter.PersonViewHolder> {
@@ -52,7 +54,7 @@ public class ContactsPageListAdapter extends RecyclerView.Adapter<ContactsPageLi
 
     List<ContactsPageCardData> persons;
 
-    ContactsPageListAdapter(List<ContactsPageCardData> persons){
+    public ContactsPageListAdapter(List<ContactsPageCardData> persons){
         this.persons = persons;
     }
 

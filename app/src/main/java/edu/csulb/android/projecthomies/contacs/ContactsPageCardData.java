@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 // CONTACTS CARD DATA
 public class ContactsPageCardData {

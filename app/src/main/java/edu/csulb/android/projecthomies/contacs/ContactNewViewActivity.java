@@ -1,8 +1,6 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,7 +14,9 @@ import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 
-public class NewContactView extends AppCompatActivity {
+import edu.csulb.android.projecthomies.R;
+
+public class ContactNewViewActivity extends AppCompatActivity {
 
     private EditText first_n;
     private EditText last_n;

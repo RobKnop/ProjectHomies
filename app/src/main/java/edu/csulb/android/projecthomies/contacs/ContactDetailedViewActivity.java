@@ -1,4 +1,4 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import edu.csulb.android.projecthomies.R;
 
-public class DetailedContactView extends AppCompatActivity {
+
+public class ContactDetailedViewActivity extends AppCompatActivity {
 
     private TextView first_n;
     private TextView last_n;
@@ -44,7 +46,7 @@ public class DetailedContactView extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.edit_contact_settings) {
-            Intent i = new Intent("edu.csulb.android.projecthomies.EditContactView");
+            Intent i = new Intent(this, ContactEditViewActivity.class);
             startActivity(i);
         }
 

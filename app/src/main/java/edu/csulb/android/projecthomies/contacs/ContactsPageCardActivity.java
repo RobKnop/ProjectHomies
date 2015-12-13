@@ -1,9 +1,11 @@
-package edu.csulb.android.projecthomies;
+package edu.csulb.android.projecthomies.contacs;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import edu.csulb.android.projecthomies.R;
 
 // JAVA ACTIVITY FILE FOR CARD_VIEW
 public class ContactsPageCardActivity extends Activity {
