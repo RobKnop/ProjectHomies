@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--merge xmlns:android="http://schemas.android.com/apk/res/android"-->
+
 
 <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fab_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_marginRight="@dimen/activity_vertical_margin"
-    android:clipChildren="false"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:clipChildren="false">
 
-        <ImageButton
-            android:id="@+id/fab_action_contact"
-            style="@style/FloatingActionButton.Mini"
-            android:src="@drawable/ic_new_contact"
-            android:layout_above="@+id/fab_action_reminder"
-            android:layout_alignEnd="@+id/fab"
-            android:contentDescription="@null" />
+    <ImageButton
+        android:id="@+id/fab_action_contact"
+        style="@style/FloatingActionButton.Mini"
+        android:layout_above="@+id/fab_action_reminder"
+        android:layout_alignEnd="@+id/fab"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_new_contact" />
 
-        <ImageButton
-            android:id="@id/fab_action_reminder"
-            style="@style/FloatingActionButton.Mini"
-            android:src="@drawable/ic_new_reminder"
-            android:layout_above="@+id/fab_action_event"
-            android:layout_alignEnd="@id/fab"
-            android:contentDescription="@null" />
+    <ImageButton
+        android:id="@id/fab_action_reminder"
+        style="@style/FloatingActionButton.Mini"
+        android:layout_above="@+id/fab_action_event"
+        android:layout_alignEnd="@id/fab"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_new_reminder" />
 
-        <ImageButton
-            android:id="@id/fab_action_event"
-            style="@style/FloatingActionButton.Mini"
-            android:src="@drawable/ic_new_event"
-            android:layout_above="@id/fab"
-            android:layout_alignEnd="@id/fab"
-            android:contentDescription="@null" />
+    <ImageButton
+        android:id="@id/fab_action_event"
+        style="@style/FloatingActionButton.Mini"
+        android:layout_above="@id/fab"
+        android:layout_alignEnd="@id/fab"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_new_event" />
 
-        <ImageButton
-            android:id="@id/fab"
-            style="@style/FloatingActionButton"
-            android:src="@drawable/plus"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:contentDescription="@null"
-            android:visibility="visible"
-            android:layout_marginTop="8dp" />
+    <ImageButton
+        android:id="@id/fab"
+        style="@style/FloatingActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@null"
+        android:src="@drawable/plus"
+        android:visibility="visible" />
 
-    </RelativeLayout>
+</RelativeLayout>
