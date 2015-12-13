@@ -1,6 +1,5 @@
-# ProjectHomies
+# ProjectHomies 0.1.1
 Group project for the mobile development class CECS 453 at CSULB.
-### V0.1.1 (12/13/15)
 
 ###PROJECT MANAGEMENT:
 
@@ -40,4 +39,6 @@ Group project for the mobile development class CECS 453 at CSULB.
 18. Implemented Splash Screen and Logo (12/8/15) - (EH)
 19. Reminders with Alarms/Notifications (12/8/15) - (EH)
 20. Contact View with Database, Database does not work yet (12/9/15) - (DC)
-
+21. Reaching V0.1 (12/9/15)
+22. Refactoring (12/13/15) - (RK, DC, EH)
+23. Reaching V0.1.1
