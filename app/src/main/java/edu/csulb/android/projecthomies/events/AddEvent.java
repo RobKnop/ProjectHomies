@@ -32,7 +32,7 @@ public class AddEvent extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_add_activity);
+        setContentView(R.layout.activity_events_add);
         findViews();
 
         eventName.setOnEditorActionListener(new TextView.OnEditorActionListener() {

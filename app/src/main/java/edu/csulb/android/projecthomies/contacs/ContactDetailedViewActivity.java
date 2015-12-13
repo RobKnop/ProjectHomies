@@ -25,7 +25,7 @@ public class ContactDetailedViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_contact_view);
+        setContentView(R.layout.activity_contacts_detailed_view);
         SQLiteDatabase readable = new ContactsDatabase(this).getReadableDatabase();
 
 

@@ -27,7 +27,7 @@ public class ContactsPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.list_view_contactspage);
+        setContentView(R.layout.lv_contacts_page);
 
         rv = (RecyclerView)findViewById(R.id.recycler_view);
 

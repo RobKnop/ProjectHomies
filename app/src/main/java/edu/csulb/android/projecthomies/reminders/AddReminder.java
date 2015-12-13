@@ -29,7 +29,7 @@ public class AddReminder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_reminder);
+        setContentView(R.layout.activity_reminders_add);
         findViews();
 
         // Create new AlarmClient

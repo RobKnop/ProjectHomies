@@ -35,7 +35,7 @@ public class ContactNewViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_contact_view);
+        setContentView(R.layout.activity_contacts_new);
 
         changePhotoID();
 

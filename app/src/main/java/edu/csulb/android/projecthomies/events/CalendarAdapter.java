@@ -89,7 +89,7 @@ public class CalendarAdapter extends BaseAdapter {
             // attributes
             LayoutInflater vi = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.cal_item, null);
+            v = vi.inflate(R.layout.li_events_cal, null);
 
         }
 

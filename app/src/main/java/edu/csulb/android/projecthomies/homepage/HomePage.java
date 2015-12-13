@@ -445,7 +445,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                 CalendarCollection.date_collection_arr.add(new CalendarCollection(date, newReminder));
 
                 lv_android = (ListView) findViewById(R.id.lv_android);
-                list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+                list_adapter = new AndroidListAdapter(HomePage.this, R.layout.li_events, CalendarCollection.date_collection_arr);
                 lv_android.setAdapter(list_adapter);
 
             }
@@ -458,7 +458,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         btn_calender.setOnClickListener(this);
 
         lv_android = (ListView) findViewById(R.id.lv_android);
-        list_adapter = new AndroidListAdapter(HomePage.this, R.layout.event_list_item, CalendarCollection.date_collection_arr);
+        list_adapter = new AndroidListAdapter(HomePage.this, R.layout.li_events, CalendarCollection.date_collection_arr);
         lv_android.setAdapter(list_adapter);
 
     }
